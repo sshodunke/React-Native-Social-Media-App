@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { TouchableOpacity, KeyboardAvoidingView, Text, View, StyleSheet, ScrollView } from 'react-native';
+import { ToastAndroid, TouchableOpacity, KeyboardAvoidingView, Text, View, StyleSheet, ScrollView, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 class SignUp extends React.Component{
@@ -7,11 +7,33 @@ class SignUp extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            forename: '',
             surname: '',
             email: '',
             password: '',
         }
+    }
+
+    sendRegisterRequest() {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user', {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json',},
+            body: JSON.stringify({
+                given_name: this.state.forename,
+                family_name: this.state.surname,
+                email: this.state.email,
+                password: this.state.password
+            }),
+        })
+
+        .then((response) => {
+            ToastAndroid.show('Register successful', ToastAndroid.SHORT);
+            this.props.navigation.navigate('Login')
+        })
+
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
     render() {
@@ -26,24 +48,30 @@ class SignUp extends React.Component{
 
                     <View>
                         <TextInput
+                            onSubmitEditing={() => this.surnameInput.focus()}
                             style={styles.textInput}
-                            placeholder='Username'
-                            onChangeText={(username) => this.setState({username})}
+                            placeholder='Forename'
+                            onChangeText={(forename) => this.setState({forename})}
                             underlineColorAndroid='transparent'/>
 
                         <TextInput
+                            onSubmitEditing={() => this.emailInput.focus()}
+                            ref={(input) => this.surnameInput = input} 
                             style={styles.textInput}
                             placeholder='Surname'
-                            onChangeText={(password) => this.setState({surname})}
+                            onChangeText={(surname) => this.setState({surname})}
                             underlineColorAndroid='transparent'/>
 
                         <TextInput
+                            onSubmitEditing={() => this.passwordInput.focus()}
+                            ref={(input) => this.emailInput = input} 
                             style={styles.textInput}
                             placeholder='Email'
-                            onChangeText={(username) => this.setState({email})}
+                            onChangeText={(email) => this.setState({email})}
                             underlineColorAndroid='transparent'/>
 
                         <TextInput
+                            ref={(input) => this.passwordInput = input}
                             style={styles.textInput}
                             placeholder='Password'
                             secureTextEntry={true}
@@ -52,7 +80,7 @@ class SignUp extends React.Component{
 
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={() => this.props.navigation.navigate('Login')}>
+                            onPress={() => this.sendRegisterRequest()}>
                             <Text>Register</Text>
                         </TouchableOpacity>
                     </View>
@@ -78,6 +106,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
     },
     header: {
+        fontSize: 24,
         fontFamily: 'Avenir Next',
         color: '#ffffff',
         marginTop: 48,
@@ -94,7 +123,7 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     btn: {
-        backgroundColor: '#26418f',
+        backgroundColor: '#8e99f3',
         fontSize: 16,
         borderRadius: 4,
         paddingVertical: 12,

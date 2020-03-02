@@ -7,9 +7,28 @@ class Login extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: '',
         }
+    }
+
+    sendLoginRequest() {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/login', {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json',},
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password
+            }),
+        })
+
+        .then((response) => {
+            this.props.navigation.navigate('Home')
+        })
+
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
     render() {
@@ -24,12 +43,14 @@ class Login extends React.Component{
 
                     <View>
                         <TextInput
+                            onSubmitEditing={() => this.passwordInput.focus()}
                             style={styles.textInput}
-                            placeholder='Username'
-                            onChangeText={(username) => this.setState({username})}
+                            placeholder='Email'
+                            onChangeText={(email) => this.setState({email})}
                             underlineColorAndroid='transparent'/>
 
                         <TextInput
+                            ref={(input) => this.passwordInput = input} 
                             style={styles.textInput}
                             placeholder='Password'
                             onChangeText={(password) => this.setState({password})}
@@ -37,7 +58,7 @@ class Login extends React.Component{
 
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={() => this.props.navigation.navigate('Home')}>
+                            onPress={() => this.sendLoginRequest()}>
                             <Text>Login</Text>
                         </TouchableOpacity>
 
@@ -69,6 +90,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
     },
     header: {
+        fontSize: 24,
         fontFamily: 'Avenir Next',
         color: '#ffffff',
         marginTop: 48,
@@ -85,7 +107,7 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     btn: {
-        backgroundColor: '#26418f',
+        backgroundColor: '#8e99f3',
         fontSize: 16,
         borderRadius: 4,
         paddingVertical: 12,
