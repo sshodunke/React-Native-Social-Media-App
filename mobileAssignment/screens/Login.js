@@ -37,11 +37,11 @@ class Login extends React.Component{
 
                         <TouchableOpacity
                             style={styles.btn}
-                            onPress={this.login}>
+                            onPress={() => this.props.navigation.navigate('Home')}>
                             <Text>Login</Text>
                         </TouchableOpacity>
 
-                        <Text onPress={this.register} style={styles.register}>Register a new account.</Text>
+                        <Text onPress={() => this.props.navigation.navigate('SignUp')} style={styles.register}>Register a new account.</Text>
                     </View>
 
                 </View>

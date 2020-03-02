@@ -2,14 +2,43 @@ import React from 'react';
 import { Text, View, StyleSheet} from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Login from './screens/Login'
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import AccountScreen from './screens/AccountScreen'
+import SignUp from './screens/SignUp';
 
-const Tab = createMaterialBottomTabNavigator()
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function MyStack() {
+  return (
+    <Stack.Navigator initialRouteName='Login'>
+      <Stack.Screen 
+        name='Login' 
+        component={Login} 
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen 
+        name="SignUp" 
+        component={SignUp}
+        options={{
+          headerShown: false
+        }} />
+      <Stack.Screen
+        name="Home"
+        component={MyTabs}
+        options={{
+          headerShown: false
+        }} />
+    </Stack.Navigator>
+  )
+}
 
 function MyTabs() {
   return (
@@ -53,7 +82,7 @@ class App extends React.Component{
   render() {
     return (
       <NavigationContainer>
-        <MyTabs/>
+        <MyStack/>
       </NavigationContainer>
     );
   }
@@ -78,4 +107,4 @@ const styles = StyleSheet.create({
 })
 
 // export default App
-export default Login
+export default App
