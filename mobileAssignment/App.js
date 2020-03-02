@@ -4,6 +4,11 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import Login from './screens/Login'
+import HomeScreen from './screens/HomeScreen'
+import SearchScreen from './screens/SearchScreen'
+import AccountScreen from './screens/AccountScreen'
+
 const Tab = createMaterialBottomTabNavigator()
 
 function MyTabs() {
@@ -54,35 +59,6 @@ class App extends React.Component{
   }
 }
 
-class HomeScreen extends React.Component{
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>HomeScreen</Text>
-      </View>
-    );
-  }
-}
-
-class SearchScreen extends React.Component{
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Search</Text>
-      </View>
-    );
-  }
-}
-
-class AccountScreen extends React.Component{
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>AccountScreen</Text>
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -101,4 +77,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default App
+// export default App
+export default Login
