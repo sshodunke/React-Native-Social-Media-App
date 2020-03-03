@@ -1,34 +1,53 @@
 import React, { Component } from 'react'; 
-import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 import { TextInput } from 'react-native-paper';
+import axios from 'axios';
 
-class Login extends React.Component{
+const options = {
+    headers: {'Accept': 'application/json', 'Content-Type': 'application/json',}
+};
+
+class Login extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             email: '',
             password: '',
+            token: '',
         }
     }
 
     sendLoginRequest() {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/login', {
-            method: 'POST',
-            headers: { Accept: 'application/json', 'Content-Type': 'application/json',},
-            body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password
-            }),
-        })
+       return axios.post('http://10.0.2.2:3333/api/v0.0.5/login', {
+            email: this.state.email,
+            password: this.state.password
+       }, options)
 
-        .then((response) => {
-            this.props.navigation.navigate('Home')
-        })
+       .then((response) => {
+           AsyncStorage.setItem('token', toString(response.data))
+           this.props.navigation.navigate('Home')
+       })
 
-        .catch((error) => {
-            console.log(error);
-        })
+       .catch(function(error) {
+           console.log(error)
+           Alert.alert('Incorrect Email/Password')
+       })
+    }
+
+    async retrieveToken() {
+        try {
+            const value = await AsyncStorage.getItem('token');
+            if (value !== null) {
+                 this.token = value
+            }
+        } catch (error) {
+        }
+    };
+
+    componentDidMount() {
+        this.retrieveToken();
     }
 
     render() {
@@ -50,6 +69,7 @@ class Login extends React.Component{
                             underlineColorAndroid='transparent'/>
 
                         <TextInput
+                            secureTextEntry={true}
                             ref={(input) => this.passwordInput = input} 
                             style={styles.textInput}
                             placeholder='Password'
@@ -69,14 +89,6 @@ class Login extends React.Component{
                 
             </KeyboardAvoidingView>
         );
-    }
-
-    login = () => {
-        alert('login')
-    }
-
-    register = () => {
-        alert('register')
     }
 }
 

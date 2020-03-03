@@ -1,11 +1,18 @@
 import React, { Component } from 'react'; 
-import { Text, View, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet, Alert } from 'react-native';
 
 class AccountScreen extends React.Component{
+
+
+    
     render() {
         return (
             <View style={styles.container}>
-                <Text>AccountScreen</Text>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => Alert.alert('test')}>
+                    <Text>Logout</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -16,6 +23,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+    },
+    btn: {
+        backgroundColor: '#8e99f3',
+        fontSize: 16,
+        borderRadius: 4,
     },
 })
 
