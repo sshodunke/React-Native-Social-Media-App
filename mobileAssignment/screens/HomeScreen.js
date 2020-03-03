@@ -1,20 +1,49 @@
 import React, { Component } from 'react'; 
-import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, Image, FlatList, Text, View, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
+import moment from 'moment'
+
+// header settings
+const options = {
+    headers: {
+        'X-Authorization': '',
+    }
+};
 
 class HomeScreen extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoading: true,
             list: []
         }
     }
 
-    getData() {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits')
+    // create a single item for the list
+    renderPost = post => {
+        return (
+            <View style={styles.feedItem}>
+                <View style={{flex: 1}}>
+                    <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                        <View>
+                            <Text style={styles.name}>{post.user.given_name}</Text>
+                            <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()} </Text>
+                            <Text style={styles.feedPost}>{post.chit_content}</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        )
+    }
+
+    // get chits from the API
+    async getData() {
+        await getItem('token')
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', options)
             .then((response) => response.json())
             .then((responseJson) => {
+                console.log(options)
                 console.log(responseJson)
                 this.setState({
                     isLoading: false,
@@ -32,17 +61,24 @@ class HomeScreen extends React.Component {
     }
 
     render() {
+        if(this.state.isLoading) {
+            return(
+                <View>
+                    <ActivityIndicator />
+                </View>
+            )
+        }
+
         return (
             <View style={styles.container}>
-                <Text>HomeScreen</Text>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>Feed</Text>
+                </View>
                 <FlatList
                     data={this.state.list}
-                    renderItem={({item}) => (
-                        <View style={styles.item}>
-                            <Text>{item.chit_content}</Text>
-                        </View>
-                    )}
-                    keyExtractor={({id}, index) => id}
+                    renderItem={({item}) => this.renderPost(item)}
+                    keyExtractor={item => item.chit_id}
+                    showsVerticalScrollIndicator={false}
                 />
             </View>
         );
@@ -52,9 +88,53 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: '#EFECF4'
     },
+    feedItem: {
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        padding: 8,
+        flexDirection: "row",
+        marginVertical: 8
+    },
+    avatar: {
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        marginRight: 16
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: '500'
+    },
+    timestamp: {
+        fontSize: 11,
+        marginTop: 4
+    },
+    header: {
+        backgroundColor: '#FFFF',
+        paddingTop: 24,
+        paddingBottom: 16,
+        alignItems: "center",
+        justifyContent: "center",
+        elevation: 1
+    },
+    headerTitle: {
+        fontSize: 20,
+        fontWeight: '500'
+    }
 })
+
+async function getItem(item) {
+    try {
+        const value = await AsyncStorage.getItem(item);
+        console.log('token', value)
+        options.headers["X-Authorization"] = value
+        //return value
+    } catch(error) {
+        console.log(error)
+    }
+}
+
 
 export default HomeScreen;
