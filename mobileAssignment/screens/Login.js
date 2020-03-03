@@ -5,7 +5,8 @@ import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 
 const options = {
-    headers: {'Accept': 'application/json', 'Content-Type': 'application/json',}
+    headers: {'Accept': 'application/json', 
+    'Content-Type': 'application/json',}
 };
 
 class Login extends React.Component {
@@ -26,7 +27,11 @@ class Login extends React.Component {
        }, options)
 
        .then((response) => {
-           AsyncStorage.setItem('token', toString(response.data))
+           let token = response.data.token
+           let id = response.data.id.toString()
+           console.log('id is', id)
+           AsyncStorage.setItem('token', token)
+           AsyncStorage.setItem('id', id)
            this.props.navigation.navigate('Home')
        })
 
@@ -40,9 +45,10 @@ class Login extends React.Component {
         try {
             const value = await AsyncStorage.getItem('token');
             if (value !== null) {
-                 this.token = value
+                this.setState({token: value})
             }
         } catch (error) {
+            console.log(error)
         }
     };
 
@@ -50,16 +56,14 @@ class Login extends React.Component {
         this.retrieveToken();
     }
 
+
     render() {
         return (
             <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-                
                 <View style={styles.container}>
-
                     <View style={styles.header}>
                         <Text style={styles.header}>Chittr</Text>
                     </View>
-
                     <View>
                         <TextInput
                             onSubmitEditing={() => this.passwordInput.focus()}
@@ -67,7 +71,6 @@ class Login extends React.Component {
                             placeholder='Email'
                             onChangeText={(email) => this.setState({email})}
                             underlineColorAndroid='transparent'/>
-
                         <TextInput
                             secureTextEntry={true}
                             ref={(input) => this.passwordInput = input} 
@@ -75,18 +78,14 @@ class Login extends React.Component {
                             placeholder='Password'
                             onChangeText={(password) => this.setState({password})}
                             underlineColorAndroid='transparent'/>
-
                         <TouchableOpacity
                             style={styles.btn}
                             onPress={() => this.sendLoginRequest()}>
                             <Text>Login</Text>
                         </TouchableOpacity>
-
                         <Text onPress={() => this.props.navigation.navigate('SignUp')} style={styles.register}>Register a new account.</Text>
                     </View>
-
                 </View>
-                
             </KeyboardAvoidingView>
         );
     }
