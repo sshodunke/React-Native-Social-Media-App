@@ -29,7 +29,6 @@ class Login extends React.Component {
        .then((response) => {
            let token = response.data.token
            let id = response.data.id.toString()
-           console.log('id is', id)
            AsyncStorage.setItem('token', token)
            AsyncStorage.setItem('id', id)
            this.props.navigation.navigate('Home')
