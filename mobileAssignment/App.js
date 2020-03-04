@@ -3,6 +3,7 @@ import { Text, View, StyleSheet} from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Login from './screens/Login'
@@ -13,6 +14,7 @@ import SignUp from './screens/SignUp';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function MyStack() {
   return (
@@ -20,23 +22,32 @@ function MyStack() {
       <Stack.Screen 
         name='Login' 
         component={Login} 
-        options={{
-          headerShown: false
-        }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen 
         name="SignUp" 
         component={SignUp}
-        options={{
-          headerShown: false
-        }} />
+        options={{headerShown: false }} 
+      />
       <Stack.Screen
         name="Home"
-        component={MyTabs}
-        options={{
-          headerShown: false
-        }} />
+        component={MyDrawer}
+        options={{headerShown: false }} 
+      />
     </Stack.Navigator>
+  )
+}
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Home">
+        <Drawer.Screen
+          name="Home"
+          component={MyTabs}>
+        </Drawer.Screen>
+        
+    </Drawer.Navigator>
   )
 }
 
