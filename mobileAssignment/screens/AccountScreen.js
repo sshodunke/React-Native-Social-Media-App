@@ -1,13 +1,10 @@
 import React, { Component } from 'react'; 
-import { TouchableOpacity, Text, View, StyleSheet, Alert } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios';
+import {getToken, options, clearAsyncStorage} from '../utils/my-utils'
 
 class AccountScreen extends React.Component {
-
-    componentDidMount() {
-        this.retrieveToken();
-    }
 
     constructor(props) {
         super(props);
@@ -30,33 +27,19 @@ class AccountScreen extends React.Component {
     }
     
     // sends a call to the API to logout - requires token in header
-    logoutRequest() {
+    async logoutRequest() {
+        await getToken('token');
         return axios.post('http://10.0.2.2:3333/api/v0.0.5/logout', data, options)
  
         .then((response) => {
             this.props.navigation.navigate('Login')
-            AsyncStorage.clear()
+            clearAsyncStorage
         })
  
         .catch(function(error) {
             console.log(error)
         })
-     }
-
-    async retrieveToken() {
-        try {
-            const value = await AsyncStorage.getItem('token');
-            if (value !== null) {
-                options.headers["X-Authorization"] = value
-            }
-        } catch (error) {
-        }
-    };
-
-    clearAsyncStorage = async() => {
-        AsyncStorage.clear();
-    }
-    
+     }    
 }
 
 const styles = StyleSheet.create({
@@ -71,12 +54,6 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
 })
-
-const options = {
-    headers: {
-        'X-Authorization': '',
-    }
-};
 
 const data = {
     

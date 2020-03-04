@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import { ActivityIndicator, Image, FlatList, Text, View, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import moment from 'moment'
+import {getToken, options} from '../utils/my-utils'
 
-// header settings
-const options = {
-    headers: {
-        'X-Authorization': '',
-    }
-};
 
 class HomeScreen extends React.Component {
 
@@ -39,7 +34,7 @@ class HomeScreen extends React.Component {
 
     // get chits from the API
     async getData() {
-        await getItem('token')
+        await getToken('token')
         return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', options)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -124,17 +119,5 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     }
 })
-
-async function getItem(item) {
-    try {
-        const value = await AsyncStorage.getItem(item);
-        console.log('token', value)
-        options.headers["X-Authorization"] = value
-        //return value
-    } catch(error) {
-        console.log(error)
-    }
-}
-
 
 export default HomeScreen;
