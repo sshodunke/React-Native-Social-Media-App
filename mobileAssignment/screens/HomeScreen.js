@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
                         <View>
                             <Text style={styles.name}>{post.user.given_name}</Text>
                             <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()} </Text>
-                            <Text style={styles.feedPost}>{post.chit_content}</Text>
+                            <Text style={styles.content}>{post.chit_content}</Text>
                         </View>
                     </View>
                 </View>
@@ -99,12 +99,13 @@ const styles = StyleSheet.create({
         marginRight: 16
     },
     name: {
-        fontSize: 16,
+        fontSize: 15,
         fontWeight: '500'
     },
     timestamp: {
         fontSize: 11,
-        marginTop: 4
+        marginTop: 4,
+        color: '#838899'
     },
     header: {
         backgroundColor: '#FFFF',
@@ -117,6 +118,11 @@ const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 20,
         fontWeight: '500'
+    },
+    content: {
+        marginTop: 14,
+        fontSize: 14,
+        color: '#838899'
     }
 })
 

@@ -11,6 +11,7 @@ import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import AccountScreen from './screens/AccountScreen'
 import SignUp from './screens/SignUp';
+import ProfileScreen from './screens/ProfileScreen'
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,6 +34,22 @@ function MyStack() {
         name="Home"
         component={MyDrawer}
         options={{headerShown: false }} 
+      />
+    </Stack.Navigator>
+  )
+}
+
+function Search() {
+  return (
+    <Stack.Navigator initialRouteName='Search'>
+      <Stack.Screen
+        name='Search'
+        component={SearchScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name='Profile'
+        component={ProfileScreen}
       />
     </Stack.Navigator>
   )
@@ -67,7 +84,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
+        component={Search}
         options={{
           tabBarIcon: ({color}) => <Icon 
               name='search'

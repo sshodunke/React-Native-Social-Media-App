@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Alert } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 import _ from 'lodash'
 
 
@@ -19,6 +19,13 @@ class SearchScreen extends React.Component{
     // create a single item for the list
     renderPost = post => {
         return (
+            <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('Profile', {
+                user_id: post.user_id,
+                given_name: post.given_name,
+                family_name: post.family_name,
+                email: post.email,
+            })}>
             <View style={styles.feedItem}>
                 <View style={{flex: 1}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
@@ -29,6 +36,7 @@ class SearchScreen extends React.Component{
                     </View>
                 </View>
             </View>
+            </TouchableHighlight>
         )
     }
 
@@ -53,7 +61,6 @@ class SearchScreen extends React.Component{
 
     updateSearch = search => {
         if(search == null || search == '') {
-            console.log('empty')
             this.setState({ query: search})
             this.setState({data: []})
         } else {
