@@ -14,11 +14,15 @@ class AccountScreen extends React.Component {
         this.state = {
             user_id: this.props.route.params.user_id,
             data: [],
+            followers: [],
+            followersCount: '',
+            following: [],
+            followingCount: '',
             isLoading: false
         }
     }
 
-    getProfileInfo = (userId => {
+    getProfileInfo = (async userId => {
         this.setState({isLoading: true})
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId)
             .then((response) => response.json())
@@ -32,7 +36,34 @@ class AccountScreen extends React.Component {
             })
 
             .catch((error) => {
-                console.log(error);
+                console.log(error)
+            })
+    })
+
+    getProfileFollowers = (async userId => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/followers', {method: 'GET'})
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({followersCount: responseJson.length})
+                this.setState({followers: responseJson})
+            })
+
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
+    getProfileFollowing = (async userId => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/following', {method: 'GET'})
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log('following', responseJson.length)
+                this.setState({followingCount: responseJson.length})
+                this.setState({following: responseJson})
+            })
+
+            .catch((error) => {
+                console.log(error)
             })
     })
 
@@ -52,7 +83,9 @@ class AccountScreen extends React.Component {
     }
 
     componentDidMount() {
+        this.getProfileFollowers(this.state.user_id.toString())
         this.getProfileInfo(this.state.user_id.toString())
+        this.getProfileFollowing(this.state.user_id.toString())
     }
 
     render() {
@@ -75,11 +108,11 @@ class AccountScreen extends React.Component {
                 </View>
                 <View style={styles.followManagement}>
                     <View style={styles.followStats}>
-                        <Text style={styles.followCount}>000</Text>
+                        <Text style={styles.followCount}>{this.state.followersCount}</Text>
                         <Text style={styles.followTitle}>Followers</Text>
                     </View>
                     <View style={styles.followStats}>
-                        <Text style={styles.followCount}>000</Text>
+                        <Text style={styles.followCount}>{this.state.followingCount}</Text>
                         <Text style={styles.followTitle}>Following</Text>
                     </View>
                 </View>
