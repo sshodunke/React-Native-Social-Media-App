@@ -3,7 +3,8 @@ import { ActivityIndicator, Image, FlatList, Text, View, StyleSheet } from 'reac
 import AsyncStorage from '@react-native-community/async-storage'
 import moment from 'moment'
 import {getToken, options} from '../utils/my-utils'
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class HomeScreen extends React.Component {
 
@@ -67,7 +68,14 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Feed</Text>
+                    <View style={{flexDirection: "row", justifyContent: "center", flex: 1}}>
+                        <Text style={styles.headerTitle}>Feed</Text>
+                    </View>
+                    <View style={{flexDirection: "row", justifyContent: 'flex-end', marginEnd: 12}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Post')} >
+                            <Icon name='plus' size={18} color='#D8D9DB'></Icon>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <FlatList
                     data={this.state.list}
@@ -108,11 +116,11 @@ const styles = StyleSheet.create({
         color: '#838899'
     },
     header: {
+        flexDirection: 'row',
         backgroundColor: '#FFFF',
         paddingTop: 24,
         paddingBottom: 16,
         alignItems: "center",
-        justifyContent: "center",
         elevation: 1
     },
     headerTitle: {

@@ -10,8 +10,10 @@ import Login from './screens/Login'
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import AccountScreen from './screens/AccountScreen'
-import SignUp from './screens/SignUp';
+import SignUp from './screens/SignUp'
 import ProfileScreen from './screens/ProfileScreen'
+import PostScreen from './screens/PostScreen';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -55,6 +57,40 @@ function Search() {
   )
 }
 
+function PostTitle() {
+  return (
+    <View style={styles.header}>
+        <View style={{flexDirection: "row-reverse", justifyContent: "center", alignItems: 'center'}}>
+            <Text style={styles.headerTitle}>Post</Text>
+        </View>
+        <View style={{flexDirection: "row", justifyContent: 'flex-end', marginEnd: 12}}>
+            <TouchableOpacity>
+                <Icon name='plus' size={18} color='#D8D9DB'></Icon>
+            </TouchableOpacity>
+        </View>
+    </View>
+  )
+}
+
+function Home() {
+  return (
+    <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="Post"
+          component={PostScreen}
+          options={{headerTitle: props => <PostTitle {...props} />}}
+        />
+    </Stack.Navigator>
+  )
+}
+
 function MyDrawer() {
   return (
     <Drawer.Navigator
@@ -68,18 +104,19 @@ function MyDrawer() {
   )
 }
 
+
+
 function MyTabs() {
   return (
-    <Tab.Navigator 
-      initialRouteName="Home">
+    <Tab.Navigator initialRouteName="Home" >
       <Tab.Screen 
         name="Home" 
-        component={HomeScreen}
+        component={Home}
         options={{
-          tabBarIcon: ({ color }) => <Icon 
-              name='home'
-              size={20}
-              color={color}/>
+          tabBarIcon: ({color}) => <Icon
+            name='home'
+            size={20}
+            color={color}/>
         }}
       />
       <Tab.Screen
@@ -116,23 +153,20 @@ class App extends React.Component{
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+  },
+  header: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: "center",
   },
-  rectangle: {
-    flexGrow: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+  headerTitle: {
+      fontSize: 20,
   },
-  scrollView: {
-    flex: 1,
-  }
 })
+
 
 // export default App
 export default App

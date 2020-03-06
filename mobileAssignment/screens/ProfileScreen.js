@@ -67,6 +67,8 @@ class AccountScreen extends React.Component {
             })
     })
 
+    // next -work on getting user profile photo
+
     renderPost = post => {
         return (
             <View style={styles.feedItem}>
