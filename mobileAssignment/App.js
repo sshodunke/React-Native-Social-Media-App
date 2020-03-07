@@ -11,7 +11,8 @@ import SearchScreen from './screens/SearchScreen'
 import AccountScreen from './screens/AccountScreen'
 import SignUp from './screens/SignUp'
 import ProfileScreen from './screens/ProfileScreen'
-import PostScreen from './screens/PostScreen';
+import PostScreen from './screens/PostScreen'
+import MyProfile from './screens/MyProfile'
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -88,7 +89,10 @@ function MyDrawer() {
           name="Account Management"
           component={AccountScreen}>
         </Drawer.Screen>
-        
+        <Drawer.Screen
+          name='My Profile'
+          component={MyProfile}>
+        </Drawer.Screen>
     </Drawer.Navigator>
   )
 }
