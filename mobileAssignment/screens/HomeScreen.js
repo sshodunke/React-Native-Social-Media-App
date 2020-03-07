@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet, Alert } from 'react-native';
 import moment from 'moment'
 import {getToken, options} from '../utils/my-utils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -11,8 +11,16 @@ class HomeScreen extends React.Component {
         super(props);
         this.state = {
             isLoading: true,
+            isFetching: false,
             list: []
         }
+    }
+
+    // refresh function to refresh FlatList
+    onRefresh() {
+        this.setState({
+            isFetching: true
+        }, function() {this.getData()})
     }
 
     // create a single item for the list
@@ -43,6 +51,7 @@ class HomeScreen extends React.Component {
                 this.setState({
                     isLoading: false,
                     list: responseJson,
+                    isFetching: false
                  });
             })
     
@@ -53,6 +62,10 @@ class HomeScreen extends React.Component {
 
     componentDidMount() {
         this.getData();
+    }
+
+    componentDidUpdate() {
+        Alert.alert('update')
     }
 
     render() {
@@ -78,6 +91,8 @@ class HomeScreen extends React.Component {
                 </View>
                 <FlatList
                     data={this.state.list}
+                    onRefresh={() => this.onRefresh}
+                    refreshing={this.state.isFetching}
                     renderItem={({item}) => this.renderPost(item)}
                     keyExtractor={item => item.chit_id.toString()}
                     showsVerticalScrollIndicator={false}
