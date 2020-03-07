@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 24,
-        fontFamily: 'Avenir Next',
         color: '#ffffff',
         marginTop: 48,
         marginBottom: 20,
