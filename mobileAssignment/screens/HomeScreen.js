@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; 
-import { ActivityIndicator, Image, FlatList, Text, View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
+import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
 import {getToken, options} from '../utils/my-utils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -59,7 +58,7 @@ class HomeScreen extends React.Component {
     render() {
         if(this.state.isLoading) {
             return(
-                <View>
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                     <ActivityIndicator />
                 </View>
             )

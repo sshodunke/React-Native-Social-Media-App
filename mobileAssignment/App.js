@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { StyleSheet} from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import Login from './screens/Login'
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
@@ -13,7 +12,7 @@ import AccountScreen from './screens/AccountScreen'
 import SignUp from './screens/SignUp'
 import ProfileScreen from './screens/ProfileScreen'
 import PostScreen from './screens/PostScreen';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -57,20 +56,10 @@ function Search() {
   )
 }
 
-function PostTitle() {
-  return (
-    <View style={styles.header}>
-        <View style={{flexDirection: "row-reverse", justifyContent: "center", alignItems: 'center'}}>
-            <Text style={styles.headerTitle}>Post</Text>
-        </View>
-        <View style={{flexDirection: "row", justifyContent: 'flex-end', marginEnd: 12}}>
-            <TouchableOpacity>
-                <Icon name='plus' size={18} color='#D8D9DB'></Icon>
-            </TouchableOpacity>
-        </View>
-    </View>
-  )
-}
+
+
+
+
 
 function Home() {
   return (
@@ -85,7 +74,8 @@ function Home() {
         <Stack.Screen
           name="Post"
           component={PostScreen}
-          options={{headerTitle: props => <PostTitle {...props} />}}
+          options={
+            {headerTitleAlign: 'row'}}
         />
     </Stack.Navigator>
   )
@@ -161,10 +151,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: "center",
+    justifyContent: 'center',
   },
   headerTitle: {
       fontSize: 20,
   },
+  icon: {
+    position: "absolute",
+    right: 16,
+  }
 })
 
 
