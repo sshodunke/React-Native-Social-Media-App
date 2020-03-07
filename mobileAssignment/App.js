@@ -56,11 +56,6 @@ function Search() {
   )
 }
 
-
-
-
-
-
 function Home() {
   return (
     <Stack.Navigator initialRouteName='Home'>
@@ -89,12 +84,14 @@ function MyDrawer() {
           name="Home"
           component={MyTabs}>
         </Drawer.Screen>
+        <Drawer.Screen
+          name="Account Management"
+          component={AccountScreen}>
+        </Drawer.Screen>
         
     </Drawer.Navigator>
   )
 }
-
-
 
 function MyTabs() {
   return (
@@ -115,16 +112,6 @@ function MyTabs() {
         options={{
           tabBarIcon: ({color}) => <Icon 
               name='search'
-              size={20}
-              color={color}/>
-        }}
-      />
-      <Tab.Screen
-        name="Account"
-        component={AccountScreen}
-        options={{
-          tabBarIcon: ({color}) => <Icon 
-              name='user'
               size={20}
               color={color}/>
         }}
