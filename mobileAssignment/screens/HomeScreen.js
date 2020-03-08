@@ -42,6 +42,7 @@ class HomeScreen extends React.Component {
 
     // get chits from the API
     async getData() {
+        console.log('start getData')
         await getToken('token')
         return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', options)
             .then((response) => response.json())
@@ -49,9 +50,9 @@ class HomeScreen extends React.Component {
                 console.log('HomeScreen.js: getData: options: ', options)
                 console.log('HomeScreen.js: getData: responseJson: ', responseJson)
                 this.setState({
-                    isLoading: false,
                     list: responseJson,
-                    isFetching: false
+                    isFetching: false,
+                    isLoading: false,
                  });
             })
     
@@ -88,7 +89,7 @@ class HomeScreen extends React.Component {
                 </View>
                 <FlatList
                     data={this.state.list}
-                    onRefresh={() => this.onRefresh}
+                    onRefresh={() => this.onRefresh()}
                     refreshing={this.state.isFetching}
                     renderItem={({item}) => this.renderPost(item)}
                     keyExtractor={item => item.chit_id.toString()}
