@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import { TextInput } from 'react-native-paper';
+import {connect, useDispatch} from 'react-redux'
 import axios from 'axios';
 
 const options = {
@@ -31,10 +32,7 @@ class Login extends React.Component {
            let id = response.data.id.toString()
            AsyncStorage.setItem('token', token)
            AsyncStorage.setItem('id', id)
-           this.props.navigation.reset({
-               index: 0,
-               routes: [{ name: 'Home'}]
-           })
+           this.props.addToken(token)
        })
 
        .catch(function(error) {
@@ -137,4 +135,15 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Login;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToken : (userToken) => dispatch({type:'ADD_TOKEN', userToken: userToken}),
+        removeToken : () => dispatch({type:'DESTROY_TOKEN'})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

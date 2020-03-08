@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,51 +14,12 @@ import ProfileScreen from './screens/ProfileScreen'
 import PostScreen from './screens/PostScreen'
 import MyProfile from './screens/MyProfile'
 import { returnToken } from './utils/my-utils'
+import {connect, useDispatch} from 'react-redux'
 
-import allReducers from './reducers/index'
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
-import {useSelector} from 'react-redux'
-import {connect} from 'react-redux'
-
-
-const store = createStore(allReducers);
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
-
-/*
-const reducer = (state=initialState, action) => {
-  switch(action.type) {
-    case 'DESTROY_TOKEN':
-      return {token: null}
-    case 'ADD_TOKEN':
-      return {token: action.token}
-  }
-  return state
-}
-*/
-/*
-
-import {connect} from 'react-redux'
-import { getUserToken } from './redux/action';
-*/
-
-/*
-const initialState = {
-  token: null
-}
-
-
-const mapStateToProps = state => ({
-  token: state.token,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getUserToken: () => dispatch(getUserToken()),
-});
-*/
 
 function Search() {
   return (
@@ -143,10 +104,9 @@ class App extends React.Component{
   }
 
   async componentDidMount() {
-    //const example = useSelector(state => state.userToken)
-    console.log(this.props.userToken)
-    let userToken = await returnToken('token')
-    this.setState({userToken: userToken, isLoading: false})
+    console.log('App: componentDidMount:', this.props.userToken.userToken)
+    //let userToken = await returnToken('token')
+    this.setState({isLoading: false})
   }
 
   render() {
@@ -161,7 +121,7 @@ class App extends React.Component{
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          {this.props.token == null ?  ( // no token found - redirect to login screen
+          {this.props.userToken.userToken == null ?  ( // no token found - redirect to login screen
             <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
           ) : ( // token found - redirect to dashboard
             <Stack.Screen name="Home" component={MyDrawer} options={{headerShown: false }} />
@@ -174,8 +134,9 @@ class App extends React.Component{
 
 const mapStateToProps = state => ({
   userToken: state.userToken,
+  loggedIn: state.loggedIn,
 });
 
 // export default App
 //export default connect(mapStateToProps, null)(App)
-export default connect (mapStateToProps, null)(App)
+export default connect (mapStateToProps)(App)

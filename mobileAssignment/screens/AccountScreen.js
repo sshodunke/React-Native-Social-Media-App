@@ -7,15 +7,13 @@ import { TextInput } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import {connect} from 'react-redux'
 
-function mapStateToProps(state) {
-    return {
-        token:state.token
-    }
-}
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+});
 
 function mapDispatchToProps(dispatch) {
     return {
-        destroyToken: () => dispatc({type:'DESTROY_TOKEN'})
+        destroyToken: () => dispatch({type:'DESTROY_TOKEN'})
     }
 }
 
@@ -108,6 +106,7 @@ class AccountScreen extends React.Component {
  
         .then((response) => {
             console.log('AccountScreen: logoutRequest:', response)
+            clearAsyncStorage()
             this.props.destroyToken()
         })
  
@@ -155,6 +154,10 @@ class AccountScreen extends React.Component {
             console.log(error);
         })
      }
+
+     componentDidMount() {
+        console.log(this.props.userToken)
+     }
 }
 
 const styles = StyleSheet.create({
@@ -190,4 +193,4 @@ const styles = StyleSheet.create({
 
 const data = {}
 
-export default connect(mapStateToProps)(AccountScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(AccountScreen)

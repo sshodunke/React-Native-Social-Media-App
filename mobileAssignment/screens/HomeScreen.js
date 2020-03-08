@@ -61,6 +61,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
+        console.log('HomeScreen')
         this.getData();
     }
 
