@@ -10,7 +10,6 @@ export const options = {
 export async function getToken(item) {
     try {
         const value = await AsyncStorage.getItem(item);
-        console.log('token', value)
         options.headers["X-Authorization"] = value
         //return value
     } catch(error) {
@@ -21,7 +20,7 @@ export async function getToken(item) {
 export async function returnToken(item) {
     try {
         const value = await AsyncStorage.getItem(item);
-        options.headers["X-Authorization"] = value
+        //options.headers["X-Authorization"] = value
         return value
     } catch(error) {
         console.log(error)

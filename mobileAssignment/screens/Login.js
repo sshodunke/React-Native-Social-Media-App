@@ -31,11 +31,14 @@ class Login extends React.Component {
            let id = response.data.id.toString()
            AsyncStorage.setItem('token', token)
            AsyncStorage.setItem('id', id)
-           this.props.navigation.navigate('Home')
+           this.props.navigation.reset({
+               index: 0,
+               routes: [{ name: 'Home'}]
+           })
        })
 
        .catch(function(error) {
-           console.log(error)
+           console.log('Login.js: sendLoginRequest: error: ',error)
            Alert.alert('Incorrect Email/Password')
        })
     }
@@ -47,7 +50,7 @@ class Login extends React.Component {
                 this.setState({token: value})
             }
         } catch (error) {
-            console.log(error)
+            console.log('Login.js: retrieveToken: error: ', error)
         }
     };
 

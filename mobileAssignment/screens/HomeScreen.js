@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Text, View, StyleSheet, Alert } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
 import {getToken, options} from '../utils/my-utils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -46,8 +46,8 @@ class HomeScreen extends React.Component {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', options)
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(options)
-                console.log(responseJson)
+                console.log('HomeScreen.js: getData: options: ', options)
+                console.log('HomeScreen.js: getData: responseJson: ', responseJson)
                 this.setState({
                     isLoading: false,
                     list: responseJson,
@@ -56,16 +56,12 @@ class HomeScreen extends React.Component {
             })
     
         .catch((error) => {
-            console.log(error);
+            console.log('HomeScreen.js: getData: error: ', error);
         });
     }
 
     componentDidMount() {
         this.getData();
-    }
-
-    componentDidUpdate() {
-        Alert.alert('update')
     }
 
     render() {

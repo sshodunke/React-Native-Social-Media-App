@@ -5,6 +5,19 @@ import axios from 'axios';
 import {getToken, options, clearAsyncStorage, returnToken} from '../utils/my-utils'
 import { TextInput } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
+import {connect} from 'react-redux'
+
+function mapStateToProps(state) {
+    return {
+        token:state.token
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        destroyToken: () => dispatc({type:'DESTROY_TOKEN'})
+    }
+}
 
 class AccountScreen extends React.Component {
 
@@ -94,12 +107,12 @@ class AccountScreen extends React.Component {
         return axios.post('http://10.0.2.2:3333/api/v0.0.5/logout', data, options)
  
         .then((response) => {
-            this.props.navigation.navigate('Login')
-            clearAsyncStorage
+            console.log('AccountScreen: logoutRequest:', response)
+            this.props.destroyToken()
         })
  
         .catch(function(error) {
-            console.log(error)
+            console.log('AccountScreen: error:',error)
         })
     }
 
@@ -115,7 +128,7 @@ class AccountScreen extends React.Component {
 
      async updateRequest(id) {
         let token = await returnToken('token')
-        console.log(id)
+        console.log('AccountScreen: updateRequest: id:', id)
         console.log(token)
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+id, {
             method: 'PATCH',
@@ -175,8 +188,6 @@ const styles = StyleSheet.create({
     },
 })
 
-const data = {
-    
-}
+const data = {}
 
-export default AccountScreen;
+export default connect(mapStateToProps)(AccountScreen)
