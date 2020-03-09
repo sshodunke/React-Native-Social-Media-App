@@ -1,9 +1,11 @@
 import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet, Alert, PermissionsAndroid } from 'react-native';
 import moment from 'moment'
 import {getToken, options} from '../utils/my-utils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Geolocation from 'react-native-geolocation-service'; 
+import { Button } from 'react-native-paper';
 
 class HomeScreen extends React.Component {
 
@@ -19,7 +21,8 @@ class HomeScreen extends React.Component {
     // refresh function to refresh FlatList
     onRefresh() {
         this.setState({
-            isFetching: true
+            isFetching: true,
+            locationPermission: false,
         }, function() {this.getData()})
     }
 
@@ -62,17 +65,67 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        console.log('HomeScreen')
         this.getData();
-
         // used to call function whenever the screen changes
         this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.getData()
         })
+
+        if(!this.state.locationPermission) {
+            this.state.locationPermission = this.requestLocationPermission()
+        }
     }
 
     componentWillUnmount() {
         this._unsubscribe()
+    }
+
+    findCoordinates = () => {
+        if(!this.state.locationPermission) {
+            this.state.locationPermission = this.requestLocationPermission()
+        } else {
+            Geolocation.getCurrentPosition(
+                (position) => {
+                    const jsonString = JSON.stringify(position)
+                    const location = JSON.parse(jsonString)
+                    
+                    this.setState({ location })
+                    console.log('location', this.state.location.coords)
+                },
+                (error) => {
+                    Alert.alert(error.message)
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 20000, 
+                    maximumAge: 1000
+                }
+            )
+        }
+    }
+
+    async requestLocationPermission() {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                {
+                    title: 'Chitr',
+                    message: 'This app requires access to your location.',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            )
+            if(granted === PermissionsAndroid.RESULTS.GRANTED) {
+                //console.log('Location permission has been granted')
+                return true
+            } else {
+                //console.log('Location permission denied')
+                return false
+            }
+        } catch(err) {
+            console.warn(err)
+        }
     }
 
     render() {
