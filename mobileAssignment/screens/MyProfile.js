@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios';
 import {getToken, options, clearAsyncStorage, returnToken} from '../utils/my-utils'
@@ -116,11 +116,15 @@ class MyProfile extends React.Component {
                 <View style={styles.followManagement}>
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followersCount}</Text>
-                        <Text style={styles.followTitle}>Followers</Text>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('FollowList')}>
+                            <Text style={styles.followTitle}>Followers</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followingCount}</Text>
-                        <Text style={styles.followTitle}>Following</Text>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('FollowList')}>
+                            <Text style={styles.followTitle}>Following</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={{flex: 1}}>

@@ -1,6 +1,7 @@
 const initialState = { 
     userToken: null, 
     loggedIn: false,
+    userId: null
 }
 
 const isLogged = (state=initialState, action) => {
@@ -13,8 +14,10 @@ const isLogged = (state=initialState, action) => {
         case 'ADD_TOKEN':
             console.log('isLogged: reducer: AddToken')
             console.log('isLogged: reducer: AddToken: token:', action.userToken)
+            console.log('isLogged: reducer: AddId: token:', action.userId)
             return {
-                userToken: action.userToken, 
+                userToken: action.userToken,
+                userId: action.userId,
                 loggedIn: true
             }
         case 'LOGIN_TRUE':

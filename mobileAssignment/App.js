@@ -15,9 +15,14 @@ import PostScreen from './screens/PostScreen'
 import MyProfile from './screens/MyProfile'
 import { returnToken } from './utils/my-utils'
 import {connect, useDispatch} from 'react-redux'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import FollowersScreen from './screens/follow_management/FollowersScreen'
+import FollowingScreen from './screens/follow_management/FollowingScreen'
+
 
 
 const Tab = createMaterialBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -61,7 +66,7 @@ function MyDrawer() {
           </Drawer.Screen>
           <Drawer.Screen
             name='My Profile'
-            component={MyProfile}>
+            component={MyProfileNavigation}>
           </Drawer.Screen>
       </Drawer.Navigator>
   )
@@ -92,6 +97,24 @@ function MyTabs() {
       />
     </Tab.Navigator>
   );
+}
+
+function TopTabs() {
+  return(
+    <TopTab.Navigator>
+      <TopTab.Screen name='Following' component={FollowingScreen} />
+      <TopTab.Screen name='Followers' component={FollowersScreen} />
+    </TopTab.Navigator>
+  )
+}
+
+function MyProfileNavigation() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='MyProfile' component={MyProfile} options={{headerShown: false}}></Stack.Screen>
+      <TopTab.Screen name='FollowList' component={TopTabs} options={{headerTitleAlign: 'row', headerTitle: 'Manage Social'}}></TopTab.Screen>
+    </Stack.Navigator>
+  )
 }
 
 class App extends React.Component{
@@ -134,6 +157,7 @@ class App extends React.Component{
 
 const mapStateToProps = state => ({
   userToken: state.userToken,
+  userId: state.userId,
   loggedIn: state.loggedIn,
 });
 

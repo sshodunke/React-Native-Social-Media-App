@@ -28,11 +28,11 @@ class Login extends React.Component {
        }, options)
 
        .then((response) => {
-           let token = response.data.token
-           let id = response.data.id.toString()
-           AsyncStorage.setItem('token', token)
-           AsyncStorage.setItem('id', id)
-           this.props.addToken(token)
+           let userToken = response.data.token
+           let userId = response.data.id.toString()
+           AsyncStorage.setItem('token', userToken)
+           AsyncStorage.setItem('id', userId)
+           this.props.addToken(userToken, userId)
        })
 
        .catch(function(error) {
@@ -141,7 +141,7 @@ const mapStateToProps = state => ({
 
 function mapDispatchToProps(dispatch) {
     return {
-        addToken : (userToken) => dispatch({type:'ADD_TOKEN', userToken: userToken}),
+        addToken : (userToken, userId) => dispatch({type:'ADD_TOKEN', userToken: userToken, userId: userId}),
         removeToken : () => dispatch({type:'DESTROY_TOKEN'})
     }
 }
