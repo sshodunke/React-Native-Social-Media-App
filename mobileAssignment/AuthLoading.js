@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import { ActivityIndicator, View } from 'react-native';
-import { returnToken } from './utils/my-utils'
-import allReducers from './reducers/index'
+import React from 'react';
+import rootReducer from './reducers/index'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import {useSelector} from 'react-redux'
-import {connect} from 'react-redux'
 import App from './App'
 
-const store = createStore(allReducers);
+const store = createStore(rootReducer);
 
 class AuthLoading extends React.Component{
     render() {
@@ -20,6 +16,4 @@ class AuthLoading extends React.Component{
     }
 }
 
-// export default App
-//export default connect(mapStateToProps, null)(App)
 export default AuthLoading
