@@ -64,6 +64,15 @@ class HomeScreen extends React.Component {
     componentDidMount() {
         console.log('HomeScreen')
         this.getData();
+
+        // used to call function whenever the screen changes
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.getData()
+        })
+    }
+
+    componentWillUnmount() {
+        this._unsubscribe()
     }
 
     render() {
