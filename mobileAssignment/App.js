@@ -145,7 +145,10 @@ class App extends React.Component{
       <NavigationContainer>
         <Stack.Navigator>
           {this.props.userToken.userToken == null ?  ( // no token found - redirect to login screen
+          <>
             <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+            <Stack.Screen name='SignUp' component={SignUp} options={{ headerShown: false }} />
+          </>
           ) : ( // token found - redirect to dashboard
             <Stack.Screen name="Home" component={MyDrawer} options={{headerShown: false }} />
           )}
