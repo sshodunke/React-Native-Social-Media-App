@@ -1,8 +1,9 @@
 import React, { Component } from 'react'; 
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+import { FlatList, TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import _ from 'lodash'
+import {connect} from 'react-redux'
 
 
 class SearchScreen extends React.Component{
@@ -19,24 +20,26 @@ class SearchScreen extends React.Component{
     // create a single item for the list
     renderPost = post => {
         return (
-            <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Profile', {
-                user_id: post.user_id,
-                given_name: post.given_name,
-                family_name: post.family_name,
-                email: post.email,
-            })}>
             <View style={styles.feedItem}>
                 <View style={{flex: 1}}>
-                    <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                        <View>
-                            <Text style={styles.name}>{post.given_name}</Text>
-                            <Text style={styles.name}>{post.family_name}</Text>
+                    <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center",}}>
+                        <View style={{flex: 1}}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile', { 
+                                user_id: post.user_id, 
+                                given_name: post.given_name, 
+                                family_name: post.family_name, 
+                                email: post.email,
+                            })}>
+                                <Text style={styles.name}>{post.given_name}</Text>
+                                <Text style={styles.name}>{post.family_name}</Text>
+                            </TouchableOpacity>
                         </View>
+                        <TouchableOpacity onPress={() => this.followUser(post.user_id)} >
+                            <Text>Follow</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
-            </TouchableHighlight>
         )
     }
 
@@ -69,9 +72,24 @@ class SearchScreen extends React.Component{
         }
     };
 
+    followUser = (async userId => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/follow', {
+            method: 'POST', 
+            headers: {
+                'X-Authorization': this.props.userToken.userToken
+            }})
+
+            .then((response) => {
+                console.log('SearchScreen: followUser: response:', response)
+            })
+
+            .catch((error) => {
+                console.log('SearchScreen: followUser: error:', error)
+            })
+    })
+
     render() {
         const { query } = this.state
-
         return (
             <View style={styles.container}>
                 <View>
@@ -135,4 +153,9 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SearchScreen;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+    userId: state.userId
+})
+
+export default connect (mapStateToProps)(SearchScreen);
