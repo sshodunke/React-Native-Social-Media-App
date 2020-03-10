@@ -24,7 +24,7 @@ class SearchScreen extends React.Component{
                 <View style={{flex: 1}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center",}}>
                         <View style={{flex: 1}}>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile', { 
+                            <TouchableOpacity onPress={() => this.props.navigation.push('Profile', { 
                                 user_id: post.user_id, 
                                 given_name: post.given_name, 
                                 family_name: post.family_name, 
