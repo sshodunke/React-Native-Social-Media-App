@@ -1,11 +1,9 @@
-import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Text, View, StyleSheet, Alert, PermissionsAndroid } from 'react-native';
+import React from 'react'; 
+import { ActivityIndicator, FlatList, Text, View, StyleSheet} from 'react-native';
 import moment from 'moment'
-import {getToken, options} from '../utils/my-utils'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Geolocation from 'react-native-geolocation-service'; 
-import { Button } from 'react-native-paper';
+import {connect} from 'react-redux'
 
 class HomeScreen extends React.Component {
 
@@ -23,7 +21,9 @@ class HomeScreen extends React.Component {
         this.setState({
             isFetching: true,
             locationPermission: false,
-        }, function() {this.getData()})
+        }, function() {
+            this.getData()
+        })
     }
 
     // create a single item for the list
@@ -45,13 +45,14 @@ class HomeScreen extends React.Component {
 
     // get chits from the API
     async getData() {
-        console.log('start getData')
-        await getToken('token')
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', options)
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', {
+            method: 'GET',
+            headers: {
+                'X-Authorization': this.props.userToken.userToken,
+            }
+        })
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log('HomeScreen.js: getData: options: ', options)
-                console.log('HomeScreen.js: getData: responseJson: ', responseJson)
                 this.setState({
                     list: responseJson,
                     isFetching: false,
@@ -60,72 +61,21 @@ class HomeScreen extends React.Component {
             })
     
         .catch((error) => {
-            console.log('HomeScreen.js: getData: error: ', error);
+            console.log('HomeScreen: getData: error: ', error);
         });
     }
 
     componentDidMount() {
         this.getData();
+
         // used to call function whenever the screen changes
         this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.getData()
         })
-
-        if(!this.state.locationPermission) {
-            this.state.locationPermission = this.requestLocationPermission()
-        }
     }
 
     componentWillUnmount() {
         this._unsubscribe()
-    }
-
-    findCoordinates = () => {
-        if(!this.state.locationPermission) {
-            this.state.locationPermission = this.requestLocationPermission()
-        } else {
-            Geolocation.getCurrentPosition(
-                (position) => {
-                    const jsonString = JSON.stringify(position)
-                    const location = JSON.parse(jsonString)
-                    
-                    this.setState({ location })
-                    console.log('location', this.state.location.coords)
-                },
-                (error) => {
-                    Alert.alert(error.message)
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 20000, 
-                    maximumAge: 1000
-                }
-            )
-        }
-    }
-
-    async requestLocationPermission() {
-        try {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-                {
-                    title: 'Chitr',
-                    message: 'This app requires access to your location.',
-                    buttonNeutral: 'Ask Me Later',
-                    buttonNegative: 'Cancel',
-                    buttonPositive: 'OK',
-                },
-            )
-            if(granted === PermissionsAndroid.RESULTS.GRANTED) {
-                //console.log('Location permission has been granted')
-                return true
-            } else {
-                //console.log('Location permission denied')
-                return false
-            }
-        } catch(err) {
-            console.warn(err)
-        }
     }
 
     render() {
@@ -139,24 +89,26 @@ class HomeScreen extends React.Component {
 
         return (
             <View style={styles.container}>
+
                 <View style={styles.header}>
                     <View style={{flexDirection: "row", justifyContent: "center", flex: 1}}>
                         <Text style={styles.headerTitle}>Feed</Text>
                     </View>
+
                     <View style={{flexDirection: "row", justifyContent: 'flex-end', marginEnd: 12}}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Post')} >
                             <Icon name='plus' size={18} color='#D8D9DB'></Icon>
                         </TouchableOpacity>
                     </View>
                 </View>
+
                 <FlatList
                     data={this.state.list}
                     onRefresh={() => this.onRefresh()}
                     refreshing={this.state.isFetching}
                     renderItem={({item}) => this.renderPost(item)}
                     keyExtractor={item => item.chit_id.toString()}
-                    showsVerticalScrollIndicator={false}
-                />
+                    showsVerticalScrollIndicator={false}/>
             </View>
         );
     }
@@ -208,4 +160,8 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+});
+
+export default connect (mapStateToProps)(HomeScreen)

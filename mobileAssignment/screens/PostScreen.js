@@ -1,9 +1,8 @@
-import React, { Component } from 'react'; 
+import React from 'react'; 
 import { ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
-import {returnToken} from '../utils/my-utils'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import axios from 'axios'
-import Geolocation from 'react-native-geolocation-service'; 
+import Geolocation from 'react-native-geolocation-service';
+import {connect} from 'react-redux'
 
 class PostScreen extends React.Component {
 
@@ -19,40 +18,37 @@ class PostScreen extends React.Component {
     }
 
     componentDidMount() {
-        // used to call function whenever the screen changes
-        this._unsubscribe = this.props.navigation.addListener('focus', () => {
-            //this.getData()
-        })
-
         if(!this.state.locationPermission) {
             this.state.locationPermission = this.requestLocationPermission()
         }
     }
 
     async createChitPost() {
-        let token = await returnToken('token');
-        console.log(token)
-        console.log(this.state.chitText)
-        return axios.post('http://10.0.2.2:3333/api/v0.0.5/chits', {
-            chit_id: 0,
-            timestamp: Date.now(),
-            chit_content: this.state.chitText,
-            location: {
-                longitude: this.state.longitude,
-                latitude: this.state.latitude,
-            }
-        }, {headers: {
-            'X-Authorization': token,
-            'Content-Type': 'application/json',
-        }})
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', {
+            method: 'POST',
+            headers: {
+                'X-Authorization': this.props.userToken.userToken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chit_id: 0,
+                timestamp: Date.now(),
+                chit_content: this.state.chitText,
+                location: {
+                    longitude: this.state.longitude,
+                    latitude: this.state.latitude,
+                }
+            })
+        })
     
-        .then((response) => {
-            console.log(response)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(responseJson)
             this.props.navigation.navigate('Home')
         })
     
         .catch(function(error) {
-            console.log(error)
+            console.log('PostScreen: createChitPost', error)
         })
     }
 
@@ -69,7 +65,7 @@ class PostScreen extends React.Component {
                 },
             )
             if(granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log('Location permission has been granted')
+                console.log('You can access location')
                 return true
             } else {
                 console.log('Location permission denied')
@@ -148,8 +144,6 @@ class PostScreen extends React.Component {
     }
 }
 
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -168,4 +162,9 @@ const styles = StyleSheet.create({
     }
 })
 
-export default PostScreen;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+    userId: state.userId
+});
+
+export default connect (mapStateToProps)(PostScreen)

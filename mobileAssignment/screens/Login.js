@@ -1,14 +1,7 @@
-import React, { Component } from 'react'; 
+import React from 'react'; 
 import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
 import { TextInput } from 'react-native-paper';
-import {connect, useDispatch} from 'react-redux'
-import axios from 'axios';
-
-const options = {
-    headers: {'Accept': 'application/json', 
-    'Content-Type': 'application/json',}
-};
+import {connect} from 'react-redux'
 
 class Login extends React.Component {
 
@@ -21,41 +14,26 @@ class Login extends React.Component {
         }
     }
 
-    sendLoginRequest() {
-       return axios.post('http://10.0.2.2:3333/api/v0.0.5/login', {
-            email: this.state.email,
-            password: this.state.password
-       }, options)
+    async sendLoginRequest() {
+       return fetch('http://10.0.2.2:3333/api/v0.0.5/login', {
+            method: 'POST',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password
+            })
+        })
+       
+        .then((response) => response.json())
+        .then((responseJson) => {
+            this.props.addToken(responseJson.token, responseJson.id.toString())
+        })
 
-       .then((response) => {
-           let userToken = response.data.token
-           let userId = response.data.id.toString()
-           AsyncStorage.setItem('token', userToken)
-           AsyncStorage.setItem('id', userId)
-           this.props.addToken(userToken, userId)
-       })
-
-       .catch(function(error) {
-           console.log('Login.js: sendLoginRequest: error: ',error)
-           Alert.alert('Incorrect Email/Password')
+        .catch(function(error) {
+            console.log('Login.js: sendLoginRequest: error:', error)
+            Alert.alert('Incorrect Email/Password')
        })
     }
-
-    async retrieveToken() {
-        try {
-            const value = await AsyncStorage.getItem('token');
-            if (value !== null) {
-                this.setState({token: value})
-            }
-        } catch (error) {
-            console.log('Login.js: retrieveToken: error: ', error)
-        }
-    };
-
-    componentDidMount() {
-        this.retrieveToken();
-    }
-
 
     render() {
         return (
@@ -64,6 +42,7 @@ class Login extends React.Component {
                     <View style={styles.header}>
                         <Text style={styles.header}>Chittr</Text>
                     </View>
+
                     <View>
                         <TextInput
                             onSubmitEditing={() => this.passwordInput.focus()}
@@ -71,6 +50,7 @@ class Login extends React.Component {
                             placeholder='Email'
                             onChangeText={(email) => this.setState({email})}
                             underlineColorAndroid='transparent'/>
+
                         <TextInput
                             secureTextEntry={true}
                             ref={(input) => this.passwordInput = input} 
@@ -78,11 +58,13 @@ class Login extends React.Component {
                             placeholder='Password'
                             onChangeText={(password) => this.setState({password})}
                             underlineColorAndroid='transparent'/>
+
                         <TouchableOpacity
                             style={styles.btn}
                             onPress={() => this.sendLoginRequest()}>
                             <Text>Login</Text>
                         </TouchableOpacity>
+
                         <Text onPress={() => this.props.navigation.navigate('SignUp')} style={styles.register}>Register a new account.</Text>
                     </View>
                 </View>
@@ -113,10 +95,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         alignSelf: "stretch",
     },
-    text: {
-        fontFamily: 'Avenir Next',
-        color: '#ffffff'
-    },
     btn: {
         backgroundColor: '#8e99f3',
         fontSize: 16,
@@ -135,15 +113,10 @@ const styles = StyleSheet.create({
     }
 })
 
-const mapStateToProps = state => ({
-    userToken: state.userToken,
-});
-
 function mapDispatchToProps(dispatch) {
     return {
-        addToken : (userToken, userId) => dispatch({type:'ADD_TOKEN', userToken: userToken, userId: userId}),
-        removeToken : () => dispatch({type:'DESTROY_TOKEN'})
+        addToken : (userToken, userId) => dispatch({type:'ADD_TOKEN', userToken: userToken, userId: userId})
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Login)

@@ -1,21 +1,8 @@
-import React, { Component } from 'react'; 
+import React from 'react'; 
 import { ToastAndroid, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
-import axios from 'axios';
-import {getToken, options, clearAsyncStorage, returnToken} from '../utils/my-utils'
 import { TextInput } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import {connect} from 'react-redux'
-
-const mapStateToProps = state => ({
-    userToken: state.userToken,
-});
-
-function mapDispatchToProps(dispatch) {
-    return {
-        destroyToken: () => dispatch({type:'DESTROY_TOKEN'})
-    }
-}
 
 class AccountScreen extends React.Component {
 
@@ -78,63 +65,55 @@ class AccountScreen extends React.Component {
                         secureTextEntry={true}
                         onChangeText={(confirmPassword) => this.setState({confirmPassword})}
                         underlineColorAndroid='transparent'/>
-
                 </View>
 
                 <View>
-                    <TouchableOpacity
-                        style={styles.btn}
-                        onPress={() => this.verifyPassword()}>
+                    <TouchableOpacity style={styles.btn} onPress={() => this.verifyPassword()}>
                         <Text>Update Account</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity
-                        style={styles.btn}
-                        onPress={() => this.logoutRequest()}>
+                    <TouchableOpacity style={styles.btn} onPress={() => this.logoutRequest()}>
                         <Text>Logout</Text>
                     </TouchableOpacity>
                 </View>
-
             </ScrollView>
         );
     }
     
     // sends a call to the API to logout - requires token in header
     async logoutRequest() {
-        await getToken('token');
-        return axios.post('http://10.0.2.2:3333/api/v0.0.5/logout', data, options)
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/logout', {
+            method: 'POST',
+            headers: {
+                'X-Authorization': this.props.userToken.userToken
+            }
+        })
  
         .then((response) => {
             console.log('AccountScreen: logoutRequest:', response)
-            clearAsyncStorage()
             this.props.destroyToken()
         })
  
         .catch(function(error) {
-            console.log('AccountScreen: error:',error)
+            console.log('AccountScreen: logoutRequest: error:',error)
         })
     }
 
-    async verifyPassword() {
+    verifyPassword() {
         if(this.state.password === this.state.confirmPassword) {
-            let id = await returnToken('id')
-            this.updateRequest(id)
+            this.updateRequest(this.props.userToken.userId)
         } else {
             ToastAndroid.show('Passwords do not match', ToastAndroid.SHORT);
         }
     }
 
-
-     async updateRequest(id) {
-        let token = await returnToken('token')
-        console.log('AccountScreen: updateRequest: id:', id)
-        console.log(token)
+    async updateRequest(id) {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+id, {
             method: 'PATCH',
             headers: { 
                 Accept: 'application/json', 
                 'Content-Type': 'application/json',
-                'X-Authorization': token,
+                'X-Authorization': this.props.userToken.userToken,
             },
             body: JSON.stringify({
                 given_name: this.state.forename,
@@ -153,11 +132,11 @@ class AccountScreen extends React.Component {
         .catch((error) => {
             console.log(error);
         })
-     }
+    }
 
-     componentDidMount() {
-        console.log(this.props.userToken)
-     }
+    componentDidMount() {
+        console.log(this.props.userToken.userToken)
+    }
 }
 
 const styles = StyleSheet.create({
@@ -191,6 +170,15 @@ const styles = StyleSheet.create({
     },
 })
 
-const data = {}
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+    userId: state.userId
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        destroyToken: () => dispatch({type:'DESTROY_TOKEN'})
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountScreen)

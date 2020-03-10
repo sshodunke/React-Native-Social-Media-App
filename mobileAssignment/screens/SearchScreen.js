@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { FlatList, TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import _ from 'lodash'
 import {connect} from 'react-redux'
 
@@ -44,21 +44,21 @@ class SearchScreen extends React.Component{
     }
 
     // get chits from the API
-    // .debounce delays function by 300ms to imrpove performance
-    searchAPI = _.debounce(searchQuery => {
+    // .debounce delays function by 300ms to improve performance when searching API
+    searchAPI = _.debounce(async searchQuery => {
         this.setState({isLoading: true})
         return fetch('http://10.0.2.2:3333/api/v0.0.5/search_user?q='+searchQuery)
+
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson)
                 this.setState({
                     isLoading: false,
                     data: responseJson,
-                 });
+                });
             })
     
         .catch((error) => {
-            console.log(error);
+            console.log('SearchScreen: searchAPI:', error);
         });
     }, 300)
 
@@ -77,7 +77,8 @@ class SearchScreen extends React.Component{
             method: 'POST', 
             headers: {
                 'X-Authorization': this.props.userToken.userToken
-            }})
+            }
+        })
 
             .then((response) => {
                 console.log('SearchScreen: followUser: response:', response)
@@ -98,15 +99,14 @@ class SearchScreen extends React.Component{
                         round={true}
                         placeholder='Search Users...'
                         onChangeText={this.updateSearch}
-                        value={query}
-                    />
+                        value={query}/>
                 </View>
+
                 <View>
                     <FlatList
                         data={this.state.data}
                         renderItem={({item}) => this.renderPost(item)}
-                        keyExtractor={item => item.user_id.toString()}
-                    />
+                        keyExtractor={item => item.user_id.toString()}/>
                 </View>
             </View>
         );
@@ -125,32 +125,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginVertical: 8
     },
-    avatar: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        marginRight: 16
-    },
     name: {
         fontSize: 16,
         fontWeight: '500'
     },
-    timestamp: {
-        fontSize: 11,
-        marginTop: 4
-    },
-    header: {
-        backgroundColor: '#FFFF',
-        paddingTop: 24,
-        paddingBottom: 16,
-        alignItems: "center",
-        justifyContent: "center",
-        elevation: 1
-    },
-    headerTitle: {
-        fontSize: 20,
-        fontWeight: '500'
-    }
 })
 
 const mapStateToProps = state => ({

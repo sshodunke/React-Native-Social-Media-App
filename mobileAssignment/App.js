@@ -56,7 +56,7 @@ function MyDrawer() {
 // main bottom navigator for the home and search screen. this navigator is nested inside the main drawer
 function MyTabs() {
   return (
-    <Tab.Navigator initialRouteName="Home" >
+    <Tab.Navigator initialRouteName="Home" tabBarOptions={{keyboardHidesTabBar: true, style: {position: 'absolute'}}}>
       <Tab.Screen name="Home" component={HomeNavigator} options={{tabBarIcon: ({color}) => <Icon name='home' size={20} color={color}/>}}/>
       <Tab.Screen name="Search" component={SearchNavigator} options={{tabBarIcon: ({color}) => <Icon name='search' size={20} color={color}/>}}/>
     </Tab.Navigator>

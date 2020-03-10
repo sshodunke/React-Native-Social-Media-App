@@ -1,5 +1,5 @@
-import React, { Component } from 'react'; 
-import { ToastAndroid, TouchableOpacity, KeyboardAvoidingView, Text, View, StyleSheet, ScrollView, Alert } from 'react-native';
+import React from 'react'; 
+import { ToastAndroid, TouchableOpacity, Text, View, StyleSheet, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 class SignUp extends React.Component{
@@ -14,7 +14,7 @@ class SignUp extends React.Component{
         }
     }
 
-    sendRegisterRequest() {
+    async sendRegisterRequest() {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user', {
             method: 'POST',
             headers: { Accept: 'application/json', 'Content-Type': 'application/json',},
@@ -27,21 +27,20 @@ class SignUp extends React.Component{
         })
 
         .then((response) => {
+            console.log('SignUp: sendRegisterRequest: response:', response)
             ToastAndroid.show('Register successful', ToastAndroid.SHORT);
             this.props.navigation.navigate('Login')
         })
 
         .catch((error) => {
-            console.log(error);
+            console.log('SignUp: sendRegisterRequest: error', error);
         })
     }
 
     render() {
         return (
-            <ScrollView style={styles.wrapper}>
-                
+            <ScrollView style={styles.wrapper}>  
                 <View style={styles.container}>
-
                     <View style={styles.header}>
                         <Text style={styles.header}>Register</Text>
                     </View>
@@ -77,22 +76,16 @@ class SignUp extends React.Component{
                             secureTextEntry={true}
                             onChangeText={(password) => this.setState({password})}
                             underlineColorAndroid='transparent'/>
-
+                            
                         <TouchableOpacity
                             style={styles.btn}
                             onPress={() => this.sendRegisterRequest()}>
                             <Text>Register</Text>
                         </TouchableOpacity>
                     </View>
-
                 </View>
-                
             </ScrollView>
         );
-    }
-
-    register = () => {
-        alert('register')
     }
 }
 

@@ -1,9 +1,7 @@
-import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet, Alert } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
-import axios from 'axios';
-import {getToken, options, clearAsyncStorage, returnToken} from '../utils/my-utils'
+import React from 'react'; 
+import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
+import {connect} from 'react-redux'
 
 
 class MyProfile extends React.Component {
@@ -26,17 +24,15 @@ class MyProfile extends React.Component {
     getProfileInfo = (async userId => {
         this.setState({isLoading: true})
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId)
+
             .then((response) => response.json())
             .then((responseJson) => {
-                //console.log(responseJson)
                 this.setState({
                     isLoading: false,
                     forename: responseJson.given_name,
                     surname: responseJson.family_name,
                     data: responseJson.recent_chits
-
                 })
-                console.log(this.state.data)
             })
 
             .catch((error) => {
@@ -46,6 +42,7 @@ class MyProfile extends React.Component {
 
     getProfileFollowers = (async userId => {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/followers', {method: 'GET'})
+
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({followersCount: responseJson.length})
@@ -59,9 +56,9 @@ class MyProfile extends React.Component {
 
     getProfileFollowing = (async userId => {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/following', {method: 'GET'})
+
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log('following', responseJson.length)
                 this.setState({followingCount: responseJson.length})
                 this.setState({following: responseJson})
             })
@@ -88,11 +85,21 @@ class MyProfile extends React.Component {
         )
     }
 
-    async componentDidMount() {
-        let userId = await returnToken('id')
-        this.getProfileInfo(userId)
-        this.getProfileFollowers(userId)
-        this.getProfileFollowing(userId)
+    componentDidMount() {
+        this.getProfileInfo(this.props.userToken.userId)
+        this.getProfileFollowers(this.props.userToken.userId)
+        this.getProfileFollowing(this.props.userToken.userId)
+
+        // used to call function whenever the screen changes
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.getProfileInfo(this.props.userToken.userId)
+            this.getProfileFollowers(this.props.userToken.userId)
+            this.getProfileFollowing(this.props.userToken.userId)
+        })
+    }
+
+    componentWillUnmount() {
+        this._unsubscribe()
     }
 
     render() {
@@ -110,9 +117,12 @@ class MyProfile extends React.Component {
                     <View>
                         <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react/logo-og.png'}}></Image>
                     </View>
+
                     <Text style={styles.forename}>{this.state.forename}</Text>
+
                     <Text style={styles.surname}>{this.state.surname}</Text>
                 </View>
+
                 <View style={styles.followManagement}>
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followersCount}</Text>
@@ -120,6 +130,7 @@ class MyProfile extends React.Component {
                             <Text style={styles.followTitle}>Followers</Text>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followingCount}</Text>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('FollowList')}>
@@ -127,6 +138,7 @@ class MyProfile extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+                
                 <View style={{flex: 1}}>
                     <FlatList
                         data={this.state.data}
@@ -183,4 +195,9 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MyProfile;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+    userId: state.userId
+});
+
+export default connect (mapStateToProps, null)(MyProfile)

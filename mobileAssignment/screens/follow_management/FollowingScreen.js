@@ -40,7 +40,8 @@ class FollowingScreen extends React.Component{
             method: 'DELETE', 
             headers: {
                 'X-Authorization': this.props.userToken.userToken
-            }})
+            }
+        })
 
             .then((response) => {
                 console.log('unfollowUser: response:', response)

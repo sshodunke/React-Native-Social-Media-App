@@ -1,8 +1,5 @@
-import React, { Component } from 'react'; 
-import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage'
-import axios from 'axios';
-import {getToken, options, clearAsyncStorage} from '../utils/my-utils'
+import React from 'react'; 
+import { ActivityIndicator, FlatList, Image, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
 
 
@@ -10,7 +7,6 @@ class AccountScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.route.params)
         this.state = {
             user_id: this.props.route.params.user_id,
             data: [],
@@ -25,23 +21,23 @@ class AccountScreen extends React.Component {
     getProfileInfo = (async userId => {
         this.setState({isLoading: true})
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId)
+        
             .then((response) => response.json())
             .then((responseJson) => {
-                //console.log(responseJson)
                 this.setState({
                     isLoading: false,
                     data: responseJson.recent_chits
                 })
-                console.log(this.state.data)
             })
 
             .catch((error) => {
-                console.log(error)
+                console.log('ProfileScreen: getProfileInfo:', error)
             })
     })
 
     getProfileFollowers = (async userId => {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/followers', {method: 'GET'})
+
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({followersCount: responseJson.length})
@@ -49,21 +45,21 @@ class AccountScreen extends React.Component {
             })
 
             .catch((error) => {
-                console.log(error)
+                console.log('ProfileScreen: getProfileFollowers:', error)
             })
     })
 
     getProfileFollowing = (async userId => {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/following', {method: 'GET'})
+
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log('following', responseJson.length)
                 this.setState({followingCount: responseJson.length})
                 this.setState({following: responseJson})
             })
 
             .catch((error) => {
-                console.log(error)
+                console.log('ProfileScreen: getProfileFollowing:', error)
             })
     })
 
@@ -105,25 +101,29 @@ class AccountScreen extends React.Component {
                     <View>
                         <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react/logo-og.png'}}></Image>
                     </View>
+
                     <Text style={styles.forename}>{this.props.route.params.given_name}</Text>
+
                     <Text style={styles.surname}>{this.props.route.params.family_name}</Text>
                 </View>
+
                 <View style={styles.followManagement}>
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followersCount}</Text>
                         <Text style={styles.followTitle}>Followers</Text>
                     </View>
+
                     <View style={styles.followStats}>
                         <Text style={styles.followCount}>{this.state.followingCount}</Text>
                         <Text style={styles.followTitle}>Following</Text>
                     </View>
                 </View>
+
                 <View style={{flex: 1}}>
                     <FlatList
                         data={this.state.data}
                         renderItem={({item}) => this.renderPost(item)}
-                        keyExtractor={item => item.chit_id.toString()}
-                    />
+                        keyExtractor={item => item.chit_id.toString()}/>
                 </View>
             </View>
         );
