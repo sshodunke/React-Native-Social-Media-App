@@ -3,6 +3,10 @@ import { ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, V
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
+import { RNCamera } from 'react-native-camera';
+import ImagePicker from 'react-native-image-picker';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 class PostScreen extends React.Component {
 
@@ -14,6 +18,7 @@ class PostScreen extends React.Component {
             toggle: false,
             longitude: 0,
             latitude: 0,
+            imageSource: null
         }
     }
 
@@ -112,10 +117,43 @@ class PostScreen extends React.Component {
             )
         }
     }
+
+    takePicture = async() => {
+        if(this.camera) {
+            const options = {quality: 0.5, base64: true}
+            const data = await this.camera.takePictureAsync(options)
+
+            console.log(data.uri, data.token)
+        }
+    }
+
+    imagePicker = () => {
+
+        ImagePicker.showImagePicker((response) => {
+            console.log('Response: ', response)
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+            
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+        
+                this.setState({
+                    imageSource: source.uri,
+                })
+            }
+        })
+    }
         
     render() {
         return (
-            <SafeAreaView style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.inputContainer}>
                     <TextInput
                         onChangeText={(chitText) => this.setState({chitText})}
@@ -123,8 +161,13 @@ class PostScreen extends React.Component {
                         multiline={true}
                         numberOfLines={4}
                         style={{flex: 1}}
-                        placeholder="Whats happening?">  
+                        placeholder="Whats happening?"> 
                     </TextInput>
+                </View>
+                <View style={{margin: 16}}>
+                {
+                    this.state.imageSource && <Image source={{uri: this.state.imageSource}} style={{width: 150,height: 150}}/>
+                }
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', margin: 16,}}>
                     <TouchableOpacity onPress={() => this.createChitPost()} style={{borderRadius: 20, justifyContent: "center", alignItems: "center", backgroundColor: 'cornflowerblue', width: 80, height: 40}}>
@@ -138,8 +181,11 @@ class PostScreen extends React.Component {
                             <Icon name='location-off' size={24} color='grey'/>
                         }
                     </TouchableOpacity>
+                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width: 80, height: 40}} onPress={() => this.imagePicker()} >
+                        <Icon name='camera-alt' size={24}></Icon>
+                    </TouchableOpacity>
                 </View>
-            </SafeAreaView>
+            </ScrollView>
         )
     }
 }
