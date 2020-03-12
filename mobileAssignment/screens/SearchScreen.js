@@ -34,9 +34,6 @@ class SearchScreen extends React.Component{
                                 <Text style={styles.name}>{post.family_name}</Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={() => this.followUser(post.user_id)} >
-                            <Text>Follow</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -71,23 +68,6 @@ class SearchScreen extends React.Component{
             this.searchAPI(search)
         }
     };
-
-    followUser = (async userId => {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/follow', {
-            method: 'POST', 
-            headers: {
-                'X-Authorization': this.props.userToken.userToken
-            }
-        })
-
-            .then((response) => {
-                console.log('SearchScreen: followUser: response:', response)
-            })
-
-            .catch((error) => {
-                console.log('SearchScreen: followUser: error:', error)
-            })
-    })
 
     render() {
         const { query } = this.state

@@ -45,7 +45,7 @@ class HomeScreen extends React.Component {
 
     // get chits from the API
     async getData() {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits', {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits?start=0&count=20', {
             method: 'GET',
             headers: {
                 'X-Authorization': this.props.userToken.userToken,

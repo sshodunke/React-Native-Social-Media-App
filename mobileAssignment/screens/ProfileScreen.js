@@ -1,7 +1,8 @@
 import React from 'react'; 
 import { ActivityIndicator, FlatList, Image, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {connect} from 'react-redux'
 
 class AccountScreen extends React.Component {
 
@@ -14,7 +15,8 @@ class AccountScreen extends React.Component {
             followersCount: '',
             following: [],
             followingCount: '',
-            isLoading: false
+            isLoading: false,
+            followingUser: false,
         }
     }
 
@@ -40,6 +42,16 @@ class AccountScreen extends React.Component {
 
             .then((response) => response.json())
             .then((responseJson) => {
+                for(var i = 0 ; i < responseJson.length; i++) {
+                    let obj = responseJson[i]
+                    console.log(obj.user_id)
+
+                    if(obj.user_id == this.props.userToken.userId) {
+                        console.log('you are following this user')
+                        this.setState({ followingUser: true})
+                    }
+                }
+
                 this.setState({followersCount: responseJson.length})
                 this.setState({followers: responseJson})
             })
@@ -86,6 +98,50 @@ class AccountScreen extends React.Component {
         this.getProfileFollowing(this.state.user_id.toString())
     }
 
+    followUser = (async userId => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/follow', {
+            method: 'POST', 
+            headers: {
+                'X-Authorization': this.props.userToken.userToken
+            }
+        })
+
+            .then((response) => {
+                console.log('ProfileScreen: followUser: response:', response)
+                this.setState({followingUser: true})
+            })
+
+            .catch((error) => {
+                console.log('ProfileScreen: followUser: error:', error)
+            })
+    })
+
+    unfollowUser = (async userId => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+userId+'/follow', {
+            method: 'DELETE', 
+            headers: {
+                'X-Authorization': this.props.userToken.userToken
+            }
+        })
+
+            .then((response) => {
+                console.log('ProfileScreen: unfollowUser: response:', response)
+                this.setState({followingUser: false})
+            })
+
+            .catch((error) => {
+                console.log('ProfileScreen: unfollowUser: error:', error)
+            })
+    })
+
+    followSelector() {
+        if(this.state.followingUser) {
+            this.unfollowUser(this.state.user_id)
+        } else {
+            this.followUser(this.state.user_id)
+        }
+    }
+
     render() {
         if(this.state.isLoading) {
             return(
@@ -119,6 +175,17 @@ class AccountScreen extends React.Component {
                     </View>
                 </View>
 
+                <View style={styles.followUnfollowUser}>
+                    <TouchableOpacity onPress={() => this.followSelector()}>
+                        {
+                            this.state.followingUser === true ?
+                            <Text style={styles.followUnfollowText}>Unfollow</Text>
+                            :
+                            <Text style={styles.followUnfollowText}>Follow</Text>
+                        }
+                    </TouchableOpacity>
+                </View>
+
                 <View style={{flex: 1}}>
                     <FlatList
                         data={this.state.data}
@@ -135,8 +202,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     avatar: {
-        width: 110,
-        height: 110,
+        width: 100,
+        height: 100,
         borderRadius: 70,
     },
     forename: {
@@ -147,7 +214,16 @@ const styles = StyleSheet.create({
     followManagement: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        margin: 24,
+        margin: 16,
+    },
+    followUnfollowUser: {
+        flexDirection: 'row',
+        justifyContent: "center",
+        margin: 12,
+    },
+    followUnfollowText: {
+        fontWeight: "bold",
+        fontSize: 16
     },
     followStats: {
         alignItems: 'center',
@@ -174,4 +250,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default AccountScreen;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+    userId: state.userId
+});
+
+
+export default connect (mapStateToProps)(AccountScreen)
