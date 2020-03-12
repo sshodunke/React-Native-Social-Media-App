@@ -3,7 +3,6 @@ import { ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, V
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
-import { RNCamera } from 'react-native-camera';
 import ImagePicker from 'react-native-image-picker';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -18,7 +17,10 @@ class PostScreen extends React.Component {
             toggle: false,
             longitude: 0,
             latitude: 0,
-            imageSource: null
+            imageSource: null,
+            imageData: null,
+            chit_id: null,
+            post_photo: false
         }
     }
 
@@ -49,11 +51,33 @@ class PostScreen extends React.Component {
         .then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson)
-            this.props.navigation.navigate('Home')
+            if(!this.state.post_photo) {
+                this.props.navigation.navigate('Home')
+            }
+            else {
+                let chit_id = responseJson.chit_id
+                this.uploadPhoto(chit_id)
+            }
         })
     
         .catch(function(error) {
             console.log('PostScreen: createChitPost', error)
+        })
+    }
+
+    async uploadPhoto(chit_id) {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits/'+chit_id+'/photo', {
+            method: 'POST',
+            headers: {
+                'X-Authorization': this.props.userToken.userToken,
+                'Content-Type': 'image/png',
+            },
+            body: this.state.imageData
+        })
+
+        .then((response) => {
+            console.log(response)
+            this.props.navigation.navigate('Home')
         })
     }
 
@@ -130,7 +154,7 @@ class PostScreen extends React.Component {
     imagePicker = () => {
 
         ImagePicker.showImagePicker((response) => {
-            console.log('Response: ', response)
+            console.log('ImagePicker: response:', response)
 
             if (response.didCancel) {
                 console.log('User cancelled image picker');
@@ -146,9 +170,24 @@ class PostScreen extends React.Component {
         
                 this.setState({
                     imageSource: source.uri,
+                    imageData: response.data
                 })
             }
         })
+    }
+
+    checkPhoto = () => {
+        if(this.state.imageSource == null) {
+            this.setState({post_photo: false}, () => {
+                console.log(this.state.post_photo);
+                this.createChitPost()
+            })
+        } else {
+            this.setState({post_photo: true}, () => {
+                console.log(this.state.post_photo);
+                this.createChitPost()
+            })
+        }
     }
         
     render() {
@@ -170,7 +209,7 @@ class PostScreen extends React.Component {
                 }
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', margin: 16,}}>
-                    <TouchableOpacity onPress={() => this.createChitPost()} style={{borderRadius: 20, justifyContent: "center", alignItems: "center", backgroundColor: 'cornflowerblue', width: 80, height: 40}}>
+                    <TouchableOpacity onPress={() => this.checkPhoto()} style={{borderRadius: 20, justifyContent: "center", alignItems: "center", backgroundColor: 'cornflowerblue', width: 80, height: 40}}>
                         <Text style={{fontSize: 16}}>Post</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.toggleLocation(!this.state.toggle)} style={{justifyContent: "center", alignItems: "center", width: 80, height: 40}}>
