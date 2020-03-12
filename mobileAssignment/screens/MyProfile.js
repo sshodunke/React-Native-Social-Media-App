@@ -90,7 +90,17 @@ class MyProfile extends React.Component {
         })
     }
 
-    // next -work on getting user profile photo
+    getProfilePhoto = async () => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/1/photo', {method: 'GET'})
+
+        .then((response) => {
+            console.log('getProfilePhoto: response:', response)
+        })
+
+        .catch((error) => {
+            console.log('getProfilePhoto: error:', error)
+        })
+    }
 
     renderPost = post => {
         return (
@@ -111,6 +121,7 @@ class MyProfile extends React.Component {
         this.getProfileInfo(this.props.userToken.userId)
         this.getProfileFollowers(this.props.userToken.userId)
         this.getProfileFollowing(this.props.userToken.userId)
+        //this.getProfilePhoto()
 
         // used to call function whenever the screen changes
         this._unsubscribe = this.props.navigation.addListener('focus', () => {
