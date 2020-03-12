@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, FlatList, Image, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import moment from 'moment'
 import {connect} from 'react-redux'
-
+import ImagePicker from 'react-native-image-picker';
 
 class MyProfile extends React.Component {
 
@@ -17,7 +17,9 @@ class MyProfile extends React.Component {
             followersCount: '',
             following: [],
             followingCount: '',
-            isLoading: false
+            isLoading: false,
+            imageSource: null,
+            imageData: null,
         }
     }
 
@@ -68,6 +70,26 @@ class MyProfile extends React.Component {
             })
     })
 
+    uploadPhoto = async () => {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/photo', {
+            method: 'POST',
+            headers: {
+                'X-Authorization': this.props.userToken.userToken,
+                'Content-Type': 'image/png',
+            },
+            body: this.state.imageData
+        })
+
+        .then((response) => {
+            console.log('uploadPhoto: response:',response)
+            this._unsubscribe()
+        })
+
+        .catch((error) => {
+            console.log('MyProfile: getProfileFollowing:', error)
+        })
+    }
+
     // next -work on getting user profile photo
 
     renderPost = post => {
@@ -102,6 +124,33 @@ class MyProfile extends React.Component {
         this._unsubscribe()
     }
 
+    imagePicker = () => {
+
+        ImagePicker.showImagePicker((response) => {
+            console.log('ImagePicker: response:', response)
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = { uri: response.uri };
+            
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+        
+                this.setState({
+                    imageSource: source.uri,
+                    imageData: response.data
+                }, () => {
+                    this.uploadPhoto()
+                })
+            }
+        })
+    }
+
     render() {
         if(this.state.isLoading) {
             return(
@@ -115,7 +164,9 @@ class MyProfile extends React.Component {
             <View style={styles.container}>
                 <View style={{marginTop: 24, alignItems: 'center'}}>
                     <View>
-                        <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react/logo-og.png'}}></Image>
+                        <TouchableOpacity onPress={() => this.imagePicker()}>
+                            <Image style={styles.avatar} source={{uri:'https://facebook.github.io/react/logo-og.png'}}></Image>
+                        </TouchableOpacity>
                     </View>
 
                     <Text style={styles.forename}>{this.state.forename}</Text>
