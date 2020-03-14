@@ -12,7 +12,8 @@ class HomeScreen extends React.Component {
         this.state = {
             isLoading: true,
             isFetching: false,
-            list: []
+            list: [],
+            start: 10
         }
     }
 
@@ -45,7 +46,7 @@ class HomeScreen extends React.Component {
 
     // get chits from the API
     async getData() {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits?start=0&count=20', {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/chits?start=0&count='+this.state.start, {
             method: 'GET',
             headers: {
                 'X-Authorization': this.props.userToken.userToken,
@@ -63,6 +64,14 @@ class HomeScreen extends React.Component {
         .catch((error) => {
             console.log('HomeScreen: getData: error: ', error);
         });
+    }
+
+    handleLoadMore() {
+        this.setState({
+            start: this.state.start + 10
+        }, () => {
+            this.getData()
+        })
     }
 
     componentDidMount() {
@@ -108,7 +117,10 @@ class HomeScreen extends React.Component {
                     refreshing={this.state.isFetching}
                     renderItem={({item}) => this.renderPost(item)}
                     keyExtractor={item => item.chit_id.toString()}
-                    showsVerticalScrollIndicator={false}/>
+                    showsVerticalScrollIndicator={false}
+                    onEndReached={() => this.handleLoadMore()}
+                    onEndThreshold={0}
+                    />
             </View>
         );
     }
