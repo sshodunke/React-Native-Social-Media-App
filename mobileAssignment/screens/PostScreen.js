@@ -5,6 +5,7 @@ import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
 import ImagePicker from 'react-native-image-picker';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 class PostScreen extends React.Component {
@@ -20,7 +21,8 @@ class PostScreen extends React.Component {
             imageSource: null,
             imageData: null,
             chit_id: null,
-            post_photo: false
+            post_photo: false,
+            drafts_array: []
         }
     }
 
@@ -28,6 +30,7 @@ class PostScreen extends React.Component {
         if(!this.state.locationPermission) {
             this.state.locationPermission = this.requestLocationPermission()
         }
+        this.getDrafts()
     }
 
     async createChitPost() {
@@ -180,6 +183,62 @@ class PostScreen extends React.Component {
             })
         }
     }
+
+    getDrafts = async () => {
+        try {
+            const storageArray = await AsyncStorage.getItem('drafts')
+            if(storageArray !== null) {
+                console.log('drafts:', JSON.parse(storageArray))
+                this.setState({
+                    drafts_array: JSON.parse(storageArray)
+                })
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+    storeData = async () => {
+        let json = JSON.stringify(this.state.drafts_array)
+        console.log(json)
+        try {
+            await AsyncStorage.setItem('drafts', json)
+            console.log('saved draft')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    addToDraft = () => {
+        // make object of chit data to store
+        let drafted_chit = {
+            chit_content: this.state.chitText,
+            image_source: this.state.imageData
+        }
+
+        // copy of array from state is created and updated 
+        let updateArray = this.state.drafts_array
+        updateArray.push(drafted_chit)
+
+        // state updated with new array
+        this.setState({
+            drafts_array: updateArray
+        }, () => {
+            this.storeData()
+        })
+    }
+
+    saveToDraftsAlert = () => {
+        Alert.alert(
+            'Save to drafts?',
+            'Would you like to save this message to drafts?',
+            [
+                {text: 'No', onPress: () => console.log('No clicked'), style: 'cancel'},
+                {text: 'Yes', onPress: () => this.addToDraft()}
+            ],
+            { cancelable: true },
+        )
+    }
         
     render() {
         return (
@@ -213,6 +272,9 @@ class PostScreen extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width: 80, height: 40}} onPress={() => this.imagePicker()} >
                         <Icon name='camera-alt' size={24}></Icon>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.saveToDraftsAlert()} >
+                        <Icon name='add-box' size={24}></Icon>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
