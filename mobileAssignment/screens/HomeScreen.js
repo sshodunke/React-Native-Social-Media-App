@@ -32,13 +32,21 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.feedItem}>
                 <View style={{flex: 1}}>
-                    <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                        <View>
-                            <Text style={styles.name}>{post.user.given_name}</Text>
-                            <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()} </Text>
-                            <Text style={styles.content}>{post.chit_content}</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.push('ChitDetails', {
+                        chit_content: post.chit_content,
+                        chit_id: post.chit_id,
+                        timestamp: post.timestamp,
+                        user: post.user,
+                        location: post.location
+                    })}>
+                        <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                            <View>
+                                <Text style={styles.name}>{post.user.given_name}</Text>
+                                <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()} </Text>
+                                <Text style={styles.content}>{post.chit_content}</Text>
+                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -54,6 +62,7 @@ class HomeScreen extends React.Component {
         })
             .then((response) => response.json())
             .then((responseJson) => {
+                //console.log(responseJson)
                 this.setState({
                     list: responseJson,
                     isFetching: false,

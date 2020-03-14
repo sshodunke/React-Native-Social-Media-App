@@ -16,6 +16,7 @@ import {connect} from 'react-redux'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import FollowersScreen from './screens/follow_management/FollowersScreen'
 import FollowingScreen from './screens/follow_management/FollowingScreen'
+import ChitDetailsScreen from './screens/ChitDetailsScreen'
 
 const Tab = createMaterialBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -38,6 +39,7 @@ function HomeNavigator() {
     <Stack.Navigator initialRouteName='Home'>
       <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
       <Stack.Screen name="Post" component={PostScreen} options={{headerTitleAlign: 'row'}}/>
+      <Stack.Screen name="ChitDetails" component={ChitDetailsScreen} options={{headerTitle: 'Post Details', headerTitleAlign: 'center'}}/>
     </Stack.Navigator>
   )
 }

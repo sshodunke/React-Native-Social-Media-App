@@ -70,7 +70,7 @@ class PostScreen extends React.Component {
             method: 'POST',
             headers: {
                 'X-Authorization': this.props.userToken.userToken,
-                'Content-Type': 'image/png',
+                'Content-Type': 'image/jpeg',
             },
             body: this.state.imageData
         })
