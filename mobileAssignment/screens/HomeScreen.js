@@ -107,7 +107,6 @@ class HomeScreen extends React.Component {
 
         return (
             <View style={styles.container}>
-
                 <View style={styles.header}>
                     <View style={{flexDirection: "row", justifyContent: "center", flex: 1}}>
                         <Text style={styles.headerTitle}>Feed</Text>
@@ -126,7 +125,7 @@ class HomeScreen extends React.Component {
                     refreshing={this.state.isFetching}
                     renderItem={({item}) => this.renderPost(item)}
                     keyExtractor={item => item.chit_id.toString()}
-                    showsVerticalScrollIndicator={false}
+                    showsVerticalScrollIndicator={true}
                     onEndReached={() => this.handleLoadMore()}
                     onEndThreshold={0}
                     />
