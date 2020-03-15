@@ -61,8 +61,8 @@ class FollowingScreen extends React.Component{
                 <View style={{flex: 1}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                         <View>
-                            <Text style={styles.name}>{post.given_name}</Text>
-                            <Text style={styles.name}>{post.family_name}</Text>
+                            <Text style={styles.name}>{post.given_name} {post.family_name}</Text>
+                            <Text style={styles.email}>{post.email}</Text>
                         </View>
                         <TouchableOpacity onPress={() => this.unfollowUser(post.user_id)}>
                             <View>
@@ -105,6 +105,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginVertical: 8
     },
+    email: {
+        fontSize: 14,
+        color: '#838899'
+    }
 })
 
 export default connect(mapStateToProps, null)(FollowingScreen)

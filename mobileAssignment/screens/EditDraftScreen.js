@@ -218,7 +218,8 @@ class EditDraftScreen extends React.Component {
         // make object of chit data to store
         let drafted_chit = {
             chit_content: this.state.chitText,
-            image_source: this.state.imageData
+            image_data: this.state.imageData,
+            image_source: this.state.imageSource
         }
 
         // copy of array from state is created and updated
