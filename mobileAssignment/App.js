@@ -18,6 +18,7 @@ import FollowersScreen from './screens/follow_management/FollowersScreen'
 import FollowingScreen from './screens/follow_management/FollowingScreen'
 import ChitDetailsScreen from './screens/ChitDetailsScreen'
 import DraftScreen from './screens/DraftScreen'
+import EditDraftScreen from './screens/EditDraftScreen'
 
 const Tab = createMaterialBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -42,6 +43,7 @@ function HomeNavigator() {
       <Stack.Screen name="Post" component={PostScreen} options={{headerTitleAlign: 'row'}}/>
       <Stack.Screen name="ChitDetails" component={ChitDetailsScreen} options={{headerTitle: 'Post Details', headerTitleAlign: 'center'}}/>
       <Stack.Screen name='Drafts' component={DraftScreen} options={{headerTitleAlign: "center"}}/>
+      <Stack.Screen name='EditDraft' component={EditDraftScreen} options={{headerTitle:'Edit Draft', headerTitleAlign: "center"}}/>
     </Stack.Navigator>
   )
 }

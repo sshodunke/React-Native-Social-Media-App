@@ -20,15 +20,17 @@ class DraftScreen extends React.Component {
             <View style={styles.feedItem}>
                 <View style={{flex: 1}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center",}}>
-                        <View style={{width: '60%'}}>
-                            <Text numberOfLines={1} style={styles.name}>{item.chit_content}</Text>
+                        <View style={{width: '80%'}}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('EditDraft', {
+                                    chit_content: item.chit_content,
+                                    image_source: item.image_source,
+                                    index: index
+                            })}>
+                                <Text numberOfLines={1} style={styles.name}>{item.chit_content}</Text>
+                            </TouchableOpacity>
                         </View>
 
                         <View style={{flexDirection: "row"}}>
-                            <TouchableOpacity>
-                                <Icon name='edit' size={24}></Icon>
-                            </TouchableOpacity>
-
                             <TouchableOpacity onPress={() => this.deleteDraft(index)}>
                                 <Icon name='delete' size={24}></Icon>    
                             </TouchableOpacity>
@@ -56,7 +58,7 @@ class DraftScreen extends React.Component {
         try {
             const storageArray = await AsyncStorage.getItem('drafts')
             if(storageArray !== null) {
-                console.log('drafts:', JSON.parse(storageArray))
+                //console.log('drafts:', JSON.parse(storageArray))
                 this.setState({
                     drafts_array: JSON.parse(storageArray)
                 })
@@ -68,7 +70,7 @@ class DraftScreen extends React.Component {
 
     storeData = async () => {
         let json = JSON.stringify(this.state.drafts_array)
-        console.log(json)
+        //console.log(json)
         try {
             await AsyncStorage.setItem('drafts', json)
             ToastAndroid.show('Draft List has been updated', ToastAndroid.SHORT)
@@ -79,6 +81,15 @@ class DraftScreen extends React.Component {
 
     componentDidMount() {
         this.getDrafts()
+
+        // used to call function whenever the screen changes
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.getDrafts()
+        })
+    }
+
+    componentWillUnmount() {
+        this._unsubscribe()
     }
 
     render() {

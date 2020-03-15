@@ -8,18 +8,19 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
-class PostScreen extends React.Component {
+class EditDraftScreen extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            chitText: '',
+            index: this.props.route.params.index,
+            chitText: this.props.route.params.chit_content,
             isLoading: false,
             toggle: false,
             longitude: 0,
             latitude: 0,
-            imageSource: null,
-            imageData: null,
+            imageSource: this.props.route.params.image_source,
+            imageData: this.props.route.params.image_data,
             chit_id: null,
             post_photo: false,
             drafts_array: []
@@ -30,16 +31,9 @@ class PostScreen extends React.Component {
         if(!this.state.locationPermission) {
             this.state.locationPermission = this.requestLocationPermission()
         }
+        console.log('you got:', this.props.route.params.image_data)
+        console.log('index:', this.props.route.params.index)
         this.getDrafts()
-
-        // used to call function whenever the screen changes
-        this._unsubscribe = this.props.navigation.addListener('focus', () => {
-            this.getDrafts()
-        })
-    }
-
-    componentWillUnmount() {
-        this._unsubscribe()
     }
 
     async createChitPost() {
@@ -63,6 +57,7 @@ class PostScreen extends React.Component {
         .then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson)
+            this.deleteDraft(this.state.index)
             if(!this.state.post_photo) {
                 this.props.navigation.navigate('Home')
             }
@@ -194,11 +189,10 @@ class PostScreen extends React.Component {
     }
 
     getDrafts = async () => {
-        console.log('PostScreen: fetching drafts...')
         try {
             const storageArray = await AsyncStorage.getItem('drafts')
             if(storageArray !== null) {
-                //console.log('drafts:', JSON.parse(storageArray))
+                console.log('drafts:', JSON.parse(storageArray))
                 this.setState({
                     drafts_array: JSON.parse(storageArray)
                 })
@@ -210,25 +204,26 @@ class PostScreen extends React.Component {
 
     storeData = async () => {
         let json = JSON.stringify(this.state.drafts_array)
+        console.log(json)
         try {
             await AsyncStorage.setItem('drafts', json)
-            ToastAndroid.show('Draft has been saved', ToastAndroid.SHORT)
+            ToastAndroid.show('Draft has been updated', ToastAndroid.SHORT)
+            this.props.navigation.navigate('Home')
         } catch (error) {
             console.log(error)
         }
     }
 
-    addToDraft = () => {
+    updateDraft = () => {
         // make object of chit data to store
         let drafted_chit = {
             chit_content: this.state.chitText,
-            image_data: this.state.imageData,
-            image_source: this.state.imageSource
+            image_source: this.state.imageData
         }
 
-        // copy of array from state is created and updated 
+        // copy of array from state is created and updated
         let updateArray = this.state.drafts_array
-        updateArray.push(drafted_chit)
+        updateArray[this.state.index] = drafted_chit
 
         // state updated with new array
         this.setState({
@@ -238,16 +233,17 @@ class PostScreen extends React.Component {
         })
     }
 
-    saveToDraftsAlert = () => {
-        Alert.alert(
-            'Save to drafts?',
-            'Would you like to save this message to drafts?',
-            [
-                {text: 'No', onPress: () => console.log('No clicked'), style: 'cancel'},
-                {text: 'Yes', onPress: () => this.addToDraft()}
-            ],
-            { cancelable: true },
-        )
+    deleteDraft = (index) => {
+        // copy of array from state is created and updated 
+        let updateArray = this.state.drafts_array
+        updateArray.splice(index, 1)
+
+        // state updated with new array
+        this.setState({
+            drafts_array: updateArray
+        }, () => {
+            this.storeData()
+        })
     }
         
     render() {
@@ -260,6 +256,7 @@ class PostScreen extends React.Component {
                         multiline={true}
                         numberOfLines={4}
                         style={{flex: 1}}
+                        value={this.state.chitText}
                         placeholder="Whats happening?"> 
                     </TextInput>
                 </View>
@@ -269,8 +266,8 @@ class PostScreen extends React.Component {
                 }
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', margin: 16,}}>
-                    <TouchableOpacity onPress={() => this.checkPhoto()} style={{borderRadius: 20, justifyContent: "center", alignItems: "center", backgroundColor: 'cornflowerblue', width: 80, height: 40}}>
-                        <Text style={{fontSize: 16}}>Post</Text>
+                    <TouchableOpacity onPress={() => this.checkPhoto()} style={{borderRadius: 20, justifyContent: "center", alignItems: "center", backgroundColor: 'cornflowerblue', width: 120, height: 40}}>
+                        <Text style={{fontSize: 16}}>Post Draft</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.toggleLocation(!this.state.toggle)} style={{justifyContent: "center", alignItems: "center", width: 80, height: 40}}>
                         {
@@ -283,11 +280,8 @@ class PostScreen extends React.Component {
                     <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width: 80, height: 40}} onPress={() => this.imagePicker()} >
                         <Icon name='camera-alt' size={24}></Icon>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.saveToDraftsAlert()} >
-                        <Icon name='add-box' size={24}></Icon>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.props.navigation.push('Drafts')} >
-                        <Icon name='insert-drive-file' size={24}></Icon>
+                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.updateDraft()} >
+                        <Icon name='save' size={24}></Icon>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -318,4 +312,4 @@ const mapStateToProps = state => ({
     userId: state.userId
 });
 
-export default connect (mapStateToProps)(PostScreen)
+export default connect (mapStateToProps)(EditDraftScreen)
