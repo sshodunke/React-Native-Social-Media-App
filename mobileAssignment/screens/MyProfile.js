@@ -9,7 +9,6 @@ class MyProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_id: '',
             forename: '',
             surname: '',
             data: [],
@@ -21,6 +20,21 @@ class MyProfile extends React.Component {
             imageSource: null,
             imageData: null,
         }
+    }
+
+    componentDidMount() {
+        this.getProfileInfo(this.props.userToken.userId)
+        this.getProfileFollowers(this.props.userToken.userId)
+        this.getProfileFollowing(this.props.userToken.userId)
+        this.getPhoto()
+
+        // used to call function whenever the screen changes
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.getProfileInfo(this.props.userToken.userId)
+            this.getProfileFollowers(this.props.userToken.userId)
+            this.getProfileFollowing(this.props.userToken.userId)
+            this.getPhoto()
+        })
     }
 
     getProfileInfo = (async userId => {
@@ -90,16 +104,29 @@ class MyProfile extends React.Component {
         })
     }
 
-    getProfilePhoto = async () => {
-        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/1/photo', {method: 'GET'})
-
-        .then((response) => {
-            console.log('getProfilePhoto: response:', response)
+    async getPhoto() {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+this.props.userToken.userId+'/photo', {
+            method: 'GET',
+            headers: {
+                'Accept': 'image/jpg'
+            }
         })
+        
+            .then((response) => {
+                var reader = new FileReader()
+                reader.onload = () => this.setState({imageURI: reader.result}, () => console.log('state',this.state.imageURI))
+                reader.readAsDataURL(response._bodyBlob)
 
+                // if response 200 is recieved from API then an image is attached to the chit
+                if(response.status === 200) {
+                    // hasImage set to true; image view will be rendered
+                    this.setState({hasImage: true})
+                }
+            })
+    
         .catch((error) => {
-            console.log('getProfilePhoto: error:', error)
-        })
+            console.log('ChitDetailsScreen: getPostPhoto: error:', error);
+        });
     }
 
     renderPost = post => {
@@ -115,20 +142,6 @@ class MyProfile extends React.Component {
                 </View>
             </View>
         )
-    }
-
-    componentDidMount() {
-        this.getProfileInfo(this.props.userToken.userId)
-        this.getProfileFollowers(this.props.userToken.userId)
-        this.getProfileFollowing(this.props.userToken.userId)
-        //this.getProfilePhoto()
-
-        // used to call function whenever the screen changes
-        this._unsubscribe = this.props.navigation.addListener('focus', () => {
-            this.getProfileInfo(this.props.userToken.userId)
-            this.getProfileFollowers(this.props.userToken.userId)
-            this.getProfileFollowing(this.props.userToken.userId)
-        })
     }
 
     componentWillUnmount() {
@@ -154,7 +167,7 @@ class MyProfile extends React.Component {
         
                 this.setState({
                     imageSource: source.uri,
-                    imageData: response.data
+                    imageData: response
                 }, () => {
                     this.uploadPhoto()
                 })
@@ -176,7 +189,7 @@ class MyProfile extends React.Component {
                 <View style={{marginTop: 24, alignItems: 'center'}}>
                     <View>
                         <TouchableOpacity onPress={() => this.imagePicker()}>
-                            <Image style={styles.avatar} source={{uri:'https://facebook.github.io/react/logo-og.png'}}></Image>
+                            <Image style={styles.avatar} source={{uri: this.state.imageURI}}></Image>
                         </TouchableOpacity>
                     </View>
 

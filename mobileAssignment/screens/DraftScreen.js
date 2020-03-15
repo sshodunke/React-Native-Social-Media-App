@@ -1,6 +1,5 @@
 import React from 'react'; 
-import { ToastAndroid, Image, FlatList, Text, View, StyleSheet} from 'react-native';
-import Geocoder from 'react-native-geocoding';
+import { ToastAndroid, FlatList, Text, View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -24,15 +23,15 @@ class DraftScreen extends React.Component {
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('EditDraft', {
                                     chit_content: item.chit_content,
                                     image_source: item.image_source,
+                                    image_data: item.image_data,
                                     index: index
                             })}>
                                 <Text numberOfLines={1} style={styles.name}>{item.chit_content}</Text>
                             </TouchableOpacity>
                         </View>
-
                         <View style={{flexDirection: "row"}}>
                             <TouchableOpacity onPress={() => this.deleteDraft(index)}>
-                                <Icon name='delete' size={24}></Icon>    
+                                <Icon name='delete' size={24}></Icon>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -58,7 +57,6 @@ class DraftScreen extends React.Component {
         try {
             const storageArray = await AsyncStorage.getItem('drafts')
             if(storageArray !== null) {
-                //console.log('drafts:', JSON.parse(storageArray))
                 this.setState({
                     drafts_array: JSON.parse(storageArray)
                 })
@@ -70,7 +68,6 @@ class DraftScreen extends React.Component {
 
     storeData = async () => {
         let json = JSON.stringify(this.state.drafts_array)
-        //console.log(json)
         try {
             await AsyncStorage.setItem('drafts', json)
             ToastAndroid.show('Draft List has been updated', ToastAndroid.SHORT)

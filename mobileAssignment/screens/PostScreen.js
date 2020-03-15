@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { ToastAndroid, ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
+import { ToastAndroid, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
@@ -173,7 +173,7 @@ class PostScreen extends React.Component {
         
                 this.setState({
                     imageSource: source.uri,
-                    imageData: response.data
+                    imageData: response
                 })
             }
         })

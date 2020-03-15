@@ -37,6 +37,10 @@ class SignUp extends React.Component{
         })
     }
 
+    validateRegister() {
+        
+    }
+
     render() {
         return (
             <ScrollView style={styles.wrapper}>  

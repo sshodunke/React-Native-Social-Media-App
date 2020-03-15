@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { ToastAndroid, ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
+import { ToastAndroid, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
@@ -15,13 +15,11 @@ class EditDraftScreen extends React.Component {
         this.state = {
             index: this.props.route.params.index,
             chitText: this.props.route.params.chit_content,
-            isLoading: false,
             toggle: false,
             longitude: 0,
             latitude: 0,
             imageSource: this.props.route.params.image_source,
             imageData: this.props.route.params.image_data,
-            chit_id: null,
             post_photo: false,
             drafts_array: []
         }
@@ -168,7 +166,7 @@ class EditDraftScreen extends React.Component {
         
                 this.setState({
                     imageSource: source.uri,
-                    imageData: response.data
+                    imageData: response
                 })
             }
         })

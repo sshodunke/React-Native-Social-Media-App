@@ -17,7 +17,15 @@ class AccountScreen extends React.Component {
             followingCount: '',
             isLoading: false,
             followingUser: false,
+            imageURI: null,
         }
+    }
+
+    componentDidMount() {
+        this.getProfileFollowers(this.state.user_id)
+        this.getProfileInfo(this.state.user_id)
+        this.getProfileFollowing(this.state.user_id)
+        this.getPhoto()
     }
 
     getProfileInfo = (async userId => {
@@ -44,10 +52,10 @@ class AccountScreen extends React.Component {
             .then((responseJson) => {
                 for(var i = 0 ; i < responseJson.length; i++) {
                     let obj = responseJson[i]
-                    console.log(obj.user_id)
+                    //console.log(obj.user_id)
 
                     if(obj.user_id == this.props.userToken.userId) {
-                        console.log('you are following this user')
+                        //console.log('you are following this user')
                         this.setState({ followingUser: true})
                     }
                 }
@@ -75,8 +83,6 @@ class AccountScreen extends React.Component {
             })
     })
 
-    // next -work on getting user profile photo
-
     renderPost = post => {
         return (
             <View style={styles.feedItem}>
@@ -90,12 +96,6 @@ class AccountScreen extends React.Component {
                 </View>
             </View>
         )
-    }
-
-    componentDidMount() {
-        this.getProfileFollowers(this.state.user_id.toString())
-        this.getProfileInfo(this.state.user_id.toString())
-        this.getProfileFollowing(this.state.user_id.toString())
     }
 
     followUser = (async userId => {
@@ -142,6 +142,31 @@ class AccountScreen extends React.Component {
         }
     }
 
+    async getPhoto() {
+        return fetch('http://10.0.2.2:3333/api/v0.0.5/user/'+this.state.user_id+'/photo', {
+            method: 'GET',
+            headers: {
+                'Accept': 'image/jpg'
+            }
+        })
+        
+            .then((response) => {
+                var reader = new FileReader()
+                reader.onload = () => this.setState({imageURI: reader.result}, () => console.log('state',this.state.imageURI))
+                reader.readAsDataURL(response._bodyBlob)
+
+                // if response 200 is recieved from API then an image is attached to the chit
+                if(response.status === 200) {
+                    // hasImage set to true; image view will be rendered
+                    this.setState({hasImage: true})
+                }
+            })
+    
+        .catch((error) => {
+            console.log('ChitDetailsScreen: getPostPhoto: error:', error);
+        });
+    }
+
     render() {
         if(this.state.isLoading) {
             return(
@@ -155,7 +180,7 @@ class AccountScreen extends React.Component {
             <View style={styles.container}>
                 <View style={{marginTop: 24, alignItems: 'center'}}>
                     <View>
-                        <Image style={styles.avatar} source={{uri: 'https://facebook.github.io/react/logo-og.png'}}></Image>
+                        <Image style={styles.avatar} source={{uri: this.state.imageURI}}></Image>
                     </View>
 
                     <Text style={styles.forename}>{this.props.route.params.given_name}</Text>
@@ -254,6 +279,5 @@ const mapStateToProps = state => ({
     userToken: state.userToken,
     userId: state.userId
 });
-
 
 export default connect (mapStateToProps)(AccountScreen)

@@ -1,9 +1,7 @@
 import React from 'react'; 
-import { ActivityIndicator, Image, FlatList, Text, View, StyleSheet} from 'react-native';
+import { Image, Text, View, StyleSheet} from 'react-native';
 import moment from 'moment'
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {connect} from 'react-redux'
+import {ScrollView } from 'react-native-gesture-handler';
 import Geocoder from 'react-native-geocoding';
 
 class ChitDetailsScreen extends React.Component {
@@ -17,7 +15,7 @@ class ChitDetailsScreen extends React.Component {
             user: this.props.route.params.user,
             location: this.props.route.params.location,
             hasImage: false,
-            image: null,
+            imageURI: null,
             formatted_address: null
         }
     }
@@ -46,12 +44,16 @@ class ChitDetailsScreen extends React.Component {
         return fetch('http://10.0.2.2:3333/api/v0.0.5/chits/'+this.state.chit_id+'/photo', {
             method: 'GET',
             headers: {
-                'Accept': 'image/png'
+                'Accept': 'image/jpg'
             }
         })
+        
             .then((response) => {
-                console.log('ChitDetailsScreen: getPostPhoto: response:', response)
-                //let url = URL.createObjectURL(response)
+                //console.log('ChitDetailsScreen: getPostPhoto: response:', response)
+
+                var reader = new FileReader()
+                reader.onload = () => this.setState({imageURI: reader.result}, () => console.log('state',this.state.imageURI))
+                reader.readAsDataURL(response._bodyBlob)
 
                 // if response 200 is recieved from API then an image is attached to the chit
                 if(response.status === 200) {
@@ -90,7 +92,7 @@ class ChitDetailsScreen extends React.Component {
                     null
                     :
                     <View style={styles.image}>
-                        <Image style={styles.imageProperties} source={{uri: 'http://10.0.2.2:3333/api/v0.0.5/chits/'+this.state.chit_id+'/photo'}}></Image>
+                        <Image style={styles.imageProperties} source={{uri: this.state.imageURI}}></Image>
                         <Text style={styles.imageText}>Attached Image</Text>
                     </View>
                 }
@@ -127,7 +129,8 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         marginHorizontal: 20,
-        marginVertical: 20,
+        marginTop: 40,
+        marginBottom: 20,
         flexDirection: 'column',
         justifyContent: "center",
         alignItems: "center"
