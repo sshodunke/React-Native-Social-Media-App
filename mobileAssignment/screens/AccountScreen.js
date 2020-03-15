@@ -101,7 +101,11 @@ class AccountScreen extends React.Component {
 
     verifyPassword() {
         if(this.state.password === this.state.confirmPassword) {
-            this.updateRequest(this.props.userToken.userId)
+            if(this.state.forename.length === 0 || this.state.surname.length === 0 || this.state.email.length === 0 || this.state.password.length === 0, this.state.confirmPassword.length === 0) {
+                ToastAndroid.show('A field is empty', ToastAndroid.SHORT);
+            } else {
+                this.updateRequest(this.props.userToken.userId)
+            }
         } else {
             ToastAndroid.show('Passwords do not match', ToastAndroid.SHORT);
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet} from 'react-native';
 import moment from 'moment'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux'
 
 class HomeScreen extends React.Component {
@@ -114,7 +114,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{flexDirection: "row", justifyContent: 'flex-end', marginEnd: 12}}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Post')} >
-                            <Icon name='plus' size={18} color='#D8D9DB'></Icon>
+                            <Icon name='add' size={18}></Icon>
                         </TouchableOpacity>
                     </View>
                 </View>
