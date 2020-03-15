@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert } from 'react-native';
+import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert, ToastAndroid } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import {connect} from 'react-redux'
 
@@ -31,7 +31,7 @@ class Login extends React.Component {
 
         .catch(function(error) {
             console.log('Login.js: sendLoginRequest: error:', error)
-            Alert.alert('Incorrect Email/Password')
+            ToastAndroid.show('Incorrect Email/Password', ToastAndroid.LONG)
        })
     }
 
