@@ -41,7 +41,7 @@ class HomeScreen extends React.Component {
                     })}>
                         <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                             <View>
-                                <Text style={styles.name}>{post.user.given_name}</Text>
+                                <Text style={styles.name}>{post.user.given_name} {post.user.family_name}</Text>
                                 <Text style={styles.timestamp}>{moment(post.timestamp).fromNow()} </Text>
                                 <Text style={styles.content}>{post.chit_content}</Text>
                             </View>

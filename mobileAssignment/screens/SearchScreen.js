@@ -30,8 +30,8 @@ class SearchScreen extends React.Component{
                                 family_name: post.family_name, 
                                 email: post.email,
                             })}>
-                                <Text style={styles.name}>{post.given_name}</Text>
-                                <Text style={styles.name}>{post.family_name}</Text>
+                                <Text style={styles.name}>{post.given_name} {post.family_name}</Text>
+                                <Text style={styles.email}>{post.email}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -109,6 +109,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500'
     },
+    email: {
+        fontSize: 14,
+        color: '#838899'
+    }
 })
 
 const mapStateToProps = state => ({
