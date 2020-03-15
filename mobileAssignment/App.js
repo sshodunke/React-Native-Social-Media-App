@@ -17,6 +17,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import FollowersScreen from './screens/follow_management/FollowersScreen'
 import FollowingScreen from './screens/follow_management/FollowingScreen'
 import ChitDetailsScreen from './screens/ChitDetailsScreen'
+import DraftScreen from './screens/DraftScreen'
 
 const Tab = createMaterialBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -40,6 +41,7 @@ function HomeNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
       <Stack.Screen name="Post" component={PostScreen} options={{headerTitleAlign: 'row'}}/>
       <Stack.Screen name="ChitDetails" component={ChitDetailsScreen} options={{headerTitle: 'Post Details', headerTitleAlign: 'center'}}/>
+      <Stack.Screen name='Drafts' component={DraftScreen} options={{headerTitleAlign: "center"}}/>
     </Stack.Navigator>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
+import { ToastAndroid, ActivityIndicator, PermissionsAndroid, Image, TouchableOpacity, Text, View, StyleSheet, SafeAreaView, TextInput, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from 'react-native-geolocation-service';
 import {connect} from 'react-redux'
@@ -204,6 +204,7 @@ class PostScreen extends React.Component {
         try {
             await AsyncStorage.setItem('drafts', json)
             console.log('saved draft')
+            ToastAndroid.show('Draft has been saved', ToastAndroid.SHORT)
         } catch (error) {
             console.log(error)
         }
@@ -275,6 +276,9 @@ class PostScreen extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.saveToDraftsAlert()} >
                         <Icon name='add-box' size={24}></Icon>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{justifyContent: "center", alignItems: "center", width:80, height: 40}} onPress={() => this.props.navigation.navigate('Drafts')} >
+                        <Icon name='insert-drive-file' size={24}></Icon>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
