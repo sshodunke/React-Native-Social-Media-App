@@ -1,13 +1,13 @@
 import 'react-native';
 import React from 'react';
-import Login from '../screens/Login'
+import SignUp from '../screens/SignUp'
 
 import configureStore from 'redux-mock-store';
 const mockStore = configureStore([]);
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
-describe('Login Component', () => {
+describe('SignUp Component', () => {
   let store
   beforeEach(() => {
     store = mockStore({
@@ -15,10 +15,10 @@ describe('Login Component', () => {
     })
   })
 
-  it('Login component should render and match snapshot', () => {
+  it('SignUp component should render and match snapshot', () => {
     expect(renderer.create(
       <Provider store={store}>
-        <Login/>
+        <SignUp/>
       </Provider>
     ).toJSON()).toMatchSnapshot()
 

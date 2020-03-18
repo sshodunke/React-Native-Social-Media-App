@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`My Connected React-Redux Component should render with given state from Redux store 1`] = `
+exports[`Login Component Login component should render and match snapshot 1`] = `
 <View
   onLayout={[Function]}
   style={
