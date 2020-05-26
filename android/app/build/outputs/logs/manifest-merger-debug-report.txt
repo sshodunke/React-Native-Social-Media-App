@@ -1,0 +1,409 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+MERGED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+MERGED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-21:12
+MERGED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:2:1-18:12
+MERGED from [:react-native-community_async-storage] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_masked-view] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:react-native-gesture-handler] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-safe-area-context] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-screens] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-vector-icons] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.62.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ee1c3a14089c4821e47adcd52fee5877/AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r245459] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/592855397b0efdb39dd06f5465e98de5/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c4335ed01a409a143315087aaf26e2e6/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84d73b60fb903f9090cf23647b5f4a0f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/22071d3bdbe493e51a5853224845c5a0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/85ee6f2d0164d5d5bd63c830a7fee613/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/15f4fa99f04aa52e52d571fe711cd518/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f89887b3eb6561c1b5de125eec860490/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/fd26b3b5468ef8cf2ea4e99ec8c73fcb/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cc5dc2b692ee64b8875066f2f8b67822/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/1e07376b6d0c7c9f47a7f0da72ba0eaf/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/b76d8a87981f39e014d65b903a043151/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c6274a6814736ffbbf6acbf6e971e860/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/68b999ff23bd3b99854a753a52cf17c8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5399bbe280b9c55660f74485f9e41e95/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bc0bc61c105832b9813a2b0802e305d5/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/552d844a6a74ad947687fe472de2b72b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8c1807328822512cf76e1db56b6bc4f6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/916b117b2b5a16e5852c19cbc8328ce8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db1de06e31e64ccc05627716ab1022e6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/9603d510acd6bb13c9772975a3e0918a/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/852ed4199d0a9e33f3f13c7653d80d60/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2ca0d8a9941e3491b88a2d442e6ccecb/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d378f1986f98a64469362a1823b13511/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c47d9e19a801b5f4e7d87a942b0a999c/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ed6dc9309300ef2a010898a741e0c80a/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/696f8726daa4494bcfab7aa3e7a15ef4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2c3cd2ba2b59e93e9ecc316a147337ba/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/aa739a10975cab1fbebfc8bf95968cd8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/0f97ae5a64f7ad1463a7235c6f64463d/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/392048200bd817948be3ae7cb1ff851a/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cb945b71139561824027bb208d1d5f8a/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7c4112f63a5e8a4fa959af78d19bbaaf/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/13d79b199f382a58cbc4e6817e1db09d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/77882bbce06623e14fc0c0887822ff77/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/4a7472d174c5700e252f70e406d181c7/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/26faf6e1ec0d3eb754a20f6c67d94f53/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e46e2a1a5bcbfab374804b8cdc0a8d5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bf97bf802b9b88fadab6e492268ce6e7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c9cae60b79a4340425dee46b779b9119/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d9da8847b57f6bb8256fb36339a7b5ae/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/417841b01eae5a0d57b5cbca20a72f3b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ec91046077487da4c49c4ab470affcc0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5e5ef3055ea7dd9453cb500af9e93e36/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5945433a213efc23276f9bf6b1b35323/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/340f25b3352053e72788a1e8b6ad06db/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8007d8f36192fcdae68570285b15cfe0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db91667f2c82bf37d63d6c89d179078c/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e6d186aa0b904a072331a181c4cf8494/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f92b0dcec1b8424074736a87119ce551/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7ed8fa51252c92cbee7be30bf8e55cb8/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ca885d3dae286cf07593eb95670ea02d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/6dd0104ce055c2a0d9c5cb07eb91370b/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d04bd533ee86ca8b5c1e6a1997879354/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/eeac55aa3416c27ea91056339e9b8b39/AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f3db0fcb4f70760af817340489a8370b/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:annotation:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e29f784717e94b1ac1518484847f4fe9/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+	package
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:2:3-33
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:2:3-33
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:1-28:12
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:4:5-67
+MERGED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.CAMERA
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:5:5-65
+MERGED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:9:5-65
+MERGED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:9:5-65
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:5:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:6:5-80
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:6:22-78
+application
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:8:5-26:19
+MERGED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:8:5-26:19
+MERGED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:8:5-26:19
+MERGED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [com.facebook.react:react-native:0.62.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ee1c3a14089c4821e47adcd52fee5877/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.62.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ee1c3a14089c4821e47adcd52fee5877/AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c4335ed01a409a143315087aaf26e2e6/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c4335ed01a409a143315087aaf26e2e6/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/22071d3bdbe493e51a5853224845c5a0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/22071d3bdbe493e51a5853224845c5a0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/15f4fa99f04aa52e52d571fe711cd518/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/15f4fa99f04aa52e52d571fe711cd518/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f89887b3eb6561c1b5de125eec860490/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f89887b3eb6561c1b5de125eec860490/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/fd26b3b5468ef8cf2ea4e99ec8c73fcb/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/fd26b3b5468ef8cf2ea4e99ec8c73fcb/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/1e07376b6d0c7c9f47a7f0da72ba0eaf/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/1e07376b6d0c7c9f47a7f0da72ba0eaf/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/b76d8a87981f39e014d65b903a043151/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/b76d8a87981f39e014d65b903a043151/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c6274a6814736ffbbf6acbf6e971e860/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c6274a6814736ffbbf6acbf6e971e860/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/77882bbce06623e14fc0c0887822ff77/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/77882bbce06623e14fc0c0887822ff77/AndroidManifest.xml:24:5-25:19
+MERGED from [com.facebook.soloader:soloader:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/eeac55aa3416c27ea91056339e9b8b39/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/eeac55aa3416c27ea91056339e9b8b39/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:annotation:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e29f784717e94b1ac1518484847f4fe9/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:annotation:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e29f784717e94b1ac1518484847f4fe9/AndroidManifest.xml:11:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:10:7-39
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:10:7-39
+	tools:ignore
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:7:75-114
+	android:roundIcon
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:12:7-52
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:12:7-52
+	tools:targetApi
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:7:54-74
+	android:icon
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:11:7-41
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:11:7-41
+	android:allowBackup
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:13:7-34
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:13:7-34
+	android:theme
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:14:7-38
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:14:7-38
+	android:usesCleartextTraffic
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:7:18-53
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:9:7-38
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:9:7-38
+activity#com.mobileassignment.MainActivity
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:15:7-24:18
+	android:label
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:17:9-41
+	android:windowSoftInputMode
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:19:9-51
+	android:configChanges
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:18:9-79
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:16:9-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:20:9-23:25
+action#android.intent.action.MAIN
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:21:13-65
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:21:21-62
+category#android.intent.category.LAUNCHER
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:22:13-73
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:22:23-70
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:25:7-84
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml:25:17-81
+uses-sdk
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_async-storage] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_async-storage] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_masked-view] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_masked-view] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-gesture-handler] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-safe-area-context] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-safe-area-context] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-screens] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.62.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ee1c3a14089c4821e47adcd52fee5877/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.62.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ee1c3a14089c4821e47adcd52fee5877/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/592855397b0efdb39dd06f5465e98de5/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/592855397b0efdb39dd06f5465e98de5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c4335ed01a409a143315087aaf26e2e6/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c4335ed01a409a143315087aaf26e2e6/AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84d73b60fb903f9090cf23647b5f4a0f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84d73b60fb903f9090cf23647b5f4a0f/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/22071d3bdbe493e51a5853224845c5a0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/22071d3bdbe493e51a5853224845c5a0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/85ee6f2d0164d5d5bd63c830a7fee613/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/85ee6f2d0164d5d5bd63c830a7fee613/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/15f4fa99f04aa52e52d571fe711cd518/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/15f4fa99f04aa52e52d571fe711cd518/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f89887b3eb6561c1b5de125eec860490/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f89887b3eb6561c1b5de125eec860490/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/fd26b3b5468ef8cf2ea4e99ec8c73fcb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/fd26b3b5468ef8cf2ea4e99ec8c73fcb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cc5dc2b692ee64b8875066f2f8b67822/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cc5dc2b692ee64b8875066f2f8b67822/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/1e07376b6d0c7c9f47a7f0da72ba0eaf/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/1e07376b6d0c7c9f47a7f0da72ba0eaf/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/b76d8a87981f39e014d65b903a043151/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/b76d8a87981f39e014d65b903a043151/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c6274a6814736ffbbf6acbf6e971e860/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c6274a6814736ffbbf6acbf6e971e860/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/68b999ff23bd3b99854a753a52cf17c8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/68b999ff23bd3b99854a753a52cf17c8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5399bbe280b9c55660f74485f9e41e95/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5399bbe280b9c55660f74485f9e41e95/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bc0bc61c105832b9813a2b0802e305d5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bc0bc61c105832b9813a2b0802e305d5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/552d844a6a74ad947687fe472de2b72b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/552d844a6a74ad947687fe472de2b72b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8c1807328822512cf76e1db56b6bc4f6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8c1807328822512cf76e1db56b6bc4f6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/916b117b2b5a16e5852c19cbc8328ce8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/916b117b2b5a16e5852c19cbc8328ce8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db1de06e31e64ccc05627716ab1022e6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db1de06e31e64ccc05627716ab1022e6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/9603d510acd6bb13c9772975a3e0918a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/9603d510acd6bb13c9772975a3e0918a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/852ed4199d0a9e33f3f13c7653d80d60/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/852ed4199d0a9e33f3f13c7653d80d60/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2ca0d8a9941e3491b88a2d442e6ccecb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2ca0d8a9941e3491b88a2d442e6ccecb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d378f1986f98a64469362a1823b13511/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d378f1986f98a64469362a1823b13511/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c47d9e19a801b5f4e7d87a942b0a999c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c47d9e19a801b5f4e7d87a942b0a999c/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ed6dc9309300ef2a010898a741e0c80a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ed6dc9309300ef2a010898a741e0c80a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/696f8726daa4494bcfab7aa3e7a15ef4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/696f8726daa4494bcfab7aa3e7a15ef4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2c3cd2ba2b59e93e9ecc316a147337ba/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2c3cd2ba2b59e93e9ecc316a147337ba/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/aa739a10975cab1fbebfc8bf95968cd8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/aa739a10975cab1fbebfc8bf95968cd8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/0f97ae5a64f7ad1463a7235c6f64463d/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/0f97ae5a64f7ad1463a7235c6f64463d/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/392048200bd817948be3ae7cb1ff851a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/392048200bd817948be3ae7cb1ff851a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cb945b71139561824027bb208d1d5f8a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/cb945b71139561824027bb208d1d5f8a/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7c4112f63a5e8a4fa959af78d19bbaaf/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7c4112f63a5e8a4fa959af78d19bbaaf/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/87f9551a63c45a93666898f04fb2df97/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/13d79b199f382a58cbc4e6817e1db09d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/13d79b199f382a58cbc4e6817e1db09d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/77882bbce06623e14fc0c0887822ff77/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/77882bbce06623e14fc0c0887822ff77/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/4a7472d174c5700e252f70e406d181c7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/4a7472d174c5700e252f70e406d181c7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/26faf6e1ec0d3eb754a20f6c67d94f53/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/26faf6e1ec0d3eb754a20f6c67d94f53/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e46e2a1a5bcbfab374804b8cdc0a8d5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e46e2a1a5bcbfab374804b8cdc0a8d5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bf97bf802b9b88fadab6e492268ce6e7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/bf97bf802b9b88fadab6e492268ce6e7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c9cae60b79a4340425dee46b779b9119/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/c9cae60b79a4340425dee46b779b9119/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d9da8847b57f6bb8256fb36339a7b5ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d9da8847b57f6bb8256fb36339a7b5ae/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/417841b01eae5a0d57b5cbca20a72f3b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/417841b01eae5a0d57b5cbca20a72f3b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ec91046077487da4c49c4ab470affcc0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ec91046077487da4c49c4ab470affcc0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5e5ef3055ea7dd9453cb500af9e93e36/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5e5ef3055ea7dd9453cb500af9e93e36/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5945433a213efc23276f9bf6b1b35323/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/5945433a213efc23276f9bf6b1b35323/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/340f25b3352053e72788a1e8b6ad06db/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/340f25b3352053e72788a1e8b6ad06db/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8007d8f36192fcdae68570285b15cfe0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/8007d8f36192fcdae68570285b15cfe0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db91667f2c82bf37d63d6c89d179078c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/db91667f2c82bf37d63d6c89d179078c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e6d186aa0b904a072331a181c4cf8494/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e6d186aa0b904a072331a181c4cf8494/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f92b0dcec1b8424074736a87119ce551/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f92b0dcec1b8424074736a87119ce551/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7ed8fa51252c92cbee7be30bf8e55cb8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/7ed8fa51252c92cbee7be30bf8e55cb8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ca885d3dae286cf07593eb95670ea02d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/ca885d3dae286cf07593eb95670ea02d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/6dd0104ce055c2a0d9c5cb07eb91370b/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/6dd0104ce055c2a0d9c5cb07eb91370b/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d04bd533ee86ca8b5c1e6a1997879354/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/d04bd533ee86ca8b5c1e6a1997879354/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/eeac55aa3416c27ea91056339e9b8b39/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/eeac55aa3416c27ea91056339e9b8b39/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f3db0fcb4f70760af817340489a8370b/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/f3db0fcb4f70760af817340489a8370b/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:annotation:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e29f784717e94b1ac1518484847f4fe9/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:annotation:0.8.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/e29f784717e94b1ac1518484847f4fe9/AndroidManifest.xml:7:5-9:41
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/android/app/src/debug/AndroidManifest.xml:5:22-75
+provider#com.imagepicker.FileProvider
+ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:9-18:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-47
+	android:authorities
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-60
+	android:exported
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-56
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-17:58
+	android:resource
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-55
+	android:name
+		ADDED from [:react-native-image-picker] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-67
+uses-feature#android.hardware.camera
+ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:11:5-13:36
+	android:required
+		ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:13:9-33
+	android:name
+		ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:12:9-47
+uses-feature#android.hardware.camera.autofocus
+ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:14:5-16:36
+	android:required
+		ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:16:9-33
+	android:name
+		ADDED from [:react-native-camera] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:15:9-57
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from [:react-native-geolocation-service] /Users/smithshodunke/Documents/GitHub/Mobile_2CWK50/mobileAssignment/node_modules/react-native-geolocation-service/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-76
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/84f0d3a383193992883c07d08fb5c3d1/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.1.0] /Users/smithshodunke/.gradle/caches/transforms-2/files-2.1/2e6da0ac7d395b0c192fb7dd504f5231/AndroidManifest.xml:24:13-58
