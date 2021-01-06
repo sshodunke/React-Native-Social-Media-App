@@ -17,7 +17,7 @@
     "@react-navigation/material-top-tabs": "^5.1.1",
     "@react-navigation/native": "^5.0.8",
     "@react-navigation/stack": "^5.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "esm": "^3.2.25",
     "expo-constants": "^8.0.0",
     "lodash": "^4.17.15",
